@@ -1,5 +1,6 @@
 var config = require('../../config.js');
 var async = require('async');
+var utils = require('../utils/utils');
 var request = require('request');
 var db = require('../db.js');
 var Log = require('log');
@@ -11,9 +12,9 @@ var log = new Log(config.logLevel);
  * Service to create a new invitation
  * @param parameters[required] A dictionary with the parameters of the request. 
  *    - owner: the user id of the owner of the event
- *    - event: the event id
- *    - hotel: the id of the hotel
- *    - invited: an array of userIds of invited people
+ *    - eventId: the event id
+ *    - reservationKey: the resevation key
+ *    - invites: an array of userIds of invited people
  * @param callback[required] A callback following the template (error, result) to return the results.
  *    The result will be empty. Check the error to see if the service succeeded.
  */
@@ -24,24 +25,24 @@ exports.sendRequest = function (parameters, callback) {
 	if (!parameters.owner) {
 		return callback('no owner sent');
 	}
-	if (!parameters.event) {
-		return callback('no event sent');
+	if (!parameters.eventId) {
+		return callback('no eventId sent');
 	}
-	if (!parameters.hotel) {
-		return callback('no hotel sent');
+	if (!parameters.reservationKey) {
+		return callback('no reservationKey sent');
 	}
-	if (!parameters.invited) {
+	if (!parameters.invites) {
 		return callback('no invited sent');
 	}
 	try
     {
-        parameters.invited = JSON.parse(parameters.invited);
+        parameters.invites = JSON.parse(parameters.invites);
     }
     catch(exception)
     {
         return callback('invalid format of invited. Should be [id1,id2] ' + exception);
     }
-    parameters.pending = parameters.invited;
+    parameters.pending = parameters.invites;
 	// main stream
 	var mainStream = [];
 	// open database
@@ -56,8 +57,7 @@ exports.sendRequest = function (parameters, callback) {
 	});
 	// update record
 	mainStream.push(function (invitationsCollection, callback) {
-
-		invitationsCollection.update({owner:parameters.owner, event:parameters.event, hotel:parameters.hotel}, {'$set':parameters}, {upsert:true}, callback);
+		invitationsCollection.update({owner:parameters.owner, event:parameters.eventId, hotel:utils.unformatRateKey(parameters.reservationKey)}, {'$set':parameters}, {upsert:true}, callback);
 	});
 	// run mainstream
 	async.waterfall(mainStream, function (error) {

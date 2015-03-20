@@ -50,5 +50,13 @@ module.exports = {
         var dd  = ("0" + (date.getDate())).slice(-2);
 
         return yyyy+"-"+mm+"-"+dd;
+    },
+
+    formatRateKey : function (rateKey) {
+        return rateKey.replace("#","*");
+    },
+
+    unformatRateKey : function () {
+        return rateKey.replace("*","#")
     }
 }

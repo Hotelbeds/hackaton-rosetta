@@ -92,7 +92,7 @@ function listhotels(paxes, latitude, longitude,radius, fromDate, toDate, callbac
                     price:hbhotel.rooms[0].prices[0].net,
                     currency:hbhotel.rooms[0].prices[0].currency,
                     board:hbhotel.rooms[0].prices[0].boardCode,
-                    reservationKey:hbhotel.rooms[0].prices[0].rateKey
+                    reservationKey: utils.formatRateKey(hbhotel.rooms[0].prices[0].rateKey)
                 });
 
             }
