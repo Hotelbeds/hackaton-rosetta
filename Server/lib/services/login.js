@@ -19,5 +19,14 @@ var log = new Log(config.logLevel);
  * @param callback[required] A callback following the template (error, result) to return the results.
  */
 exports.sendRequest = function (parameters, callback) {
-	callback(null);
+	passport.use(new FacebookStrategy({
+		clientID: config.facebookAppId,
+		clientSecret: config.facebookAppSecret,
+		callbackURL: 'http://localhost:8080/facebook/callback'
+	}, function(accessToken, refreshToken, profile, done) {
+		log.debug(accessToken, refreshToken, profile);
+		done();
+		callback(null, true);
+		})
+	);
 };

@@ -16,6 +16,8 @@
     "log":"1.4.x",
     "testing":"0.1.x",
     "async":"0.2.x",
+    "passport":"0.2.x",
+    "passport-facebook":"2.0.x",
     "grunt": "0.4.x",
     "grunt-contrib-jshint": "0.8.x"
   },
