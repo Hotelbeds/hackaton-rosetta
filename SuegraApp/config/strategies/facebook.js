@@ -34,6 +34,8 @@ module.exports = function() {
 				providerIdentifierField: 'id',
 				providerData: providerData
 			};
+			console.log('FacebookStrategy');
+
 
 			// Save the user OAuth profile
 			users.saveOAuthUserProfile(req, providerUserProfile, done);

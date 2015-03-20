@@ -17,7 +17,7 @@ exports.mongoConnection = 'mongodb://localhost/hackathon?autoReconnect=true&conn
 exports.testMongoConnection = 'mongodb://localhost/hackathon?autoReconnect=true&connectTimeoutMS=5000';
 exports.evenbriteAuth = 'BKKRDKVUVRC5WG4HAVLT';
 exports.invitationsCollection = 'invitations';
-exports.rosettaUrl = 'hotelapi.test.hotelbeds';
+exports.rosettaUrl = 'http://hotelapi.test.hotelbeds';
 try {
     var localConfig = require('./local-config.js');
     for (var key in localConfig) {
