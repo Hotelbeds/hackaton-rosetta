@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F110AC77-4889-4E6F-8D06-94166691383B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SuegrApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C544BE2E229CD60371D7E1F00C8D097BE22D3CBF</key>
+		<string>https://github.com/Hotelbeds/hackaton-rosetta.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SuegrApp/SuegrApp.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C544BE2E229CD60371D7E1F00C8D097BE22D3CBF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Hotelbeds/hackaton-rosetta.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C544BE2E229CD60371D7E1F00C8D097BE22D3CBF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C544BE2E229CD60371D7E1F00C8D097BE22D3CBF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>hackaton-rosetta</string>
+		</dict>
+	</array>
+</dict>
+</plist>

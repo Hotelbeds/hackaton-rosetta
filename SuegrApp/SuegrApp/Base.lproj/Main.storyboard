@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JTw-LK-gJH">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--Panic View Controller-->
+        <scene sceneID="ImV-TI-11a">
+            <objects>
+                <viewController id="JTw-LK-gJH" customClass="PanicViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UOu-Mf-Gaq"/>
+                        <viewControllerLayoutGuide type="bottom" id="NgM-pO-u2D"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KIE-0y-mCB">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="EFy-Bx-VW7">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9h-Vm-nUa">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" backgroundImage="panic.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="panicButtonClicked:" destination="JTw-LK-gJH" eventType="touchUpInside" id="GTB-Yw-907"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="w9h-Vm-nUa" firstAttribute="centerX" secondItem="EFy-Bx-VW7" secondAttribute="centerX" id="4c9-Ne-NaR"/>
+                            <constraint firstAttribute="trailing" secondItem="EFy-Bx-VW7" secondAttribute="trailing" id="BT6-ow-sr3"/>
+                            <constraint firstItem="EFy-Bx-VW7" firstAttribute="bottom" secondItem="NgM-pO-u2D" secondAttribute="top" id="ETa-dX-KGz"/>
+                            <constraint firstItem="EFy-Bx-VW7" firstAttribute="leading" secondItem="KIE-0y-mCB" secondAttribute="leading" id="IDt-a7-Eyf"/>
+                            <constraint firstItem="EFy-Bx-VW7" firstAttribute="top" secondItem="KIE-0y-mCB" secondAttribute="top" id="K31-sh-eb6"/>
+                            <constraint firstItem="w9h-Vm-nUa" firstAttribute="centerY" secondItem="EFy-Bx-VW7" secondAttribute="centerY" id="jao-P8-0du"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="EFy-Bx-VW7"/>
+                                <exclude reference="w9h-Vm-nUa"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="BT6-ow-sr3"/>
+                                <exclude reference="ETa-dX-KGz"/>
+                                <exclude reference="IDt-a7-Eyf"/>
+                                <exclude reference="K31-sh-eb6"/>
+                                <exclude reference="4c9-Ne-NaR"/>
+                                <exclude reference="jao-P8-0du"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="EFy-Bx-VW7"/>
+                                <include reference="w9h-Vm-nUa"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="BT6-ow-sr3"/>
+                                <include reference="ETa-dX-KGz"/>
+                                <include reference="IDt-a7-Eyf"/>
+                                <include reference="K31-sh-eb6"/>
+                                <include reference="4c9-Ne-NaR"/>
+                                <include reference="jao-P8-0du"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sEM-9k-JAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7.5" y="164.25"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="nIQ-yK-3F4">
+            <objects>
+                <viewController storyboardIdentifier="countdownViewController" id="A4c-lZ-NYA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p1Z-uy-KXG"/>
+                        <viewControllerLayoutGuide type="bottom" id="qkf-SQ-Bjg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Iia-lT-rbm">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5UK-0u-Su0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7.5" y="823.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background.png" width="320" height="568"/>
+        <image name="panic.png" width="250" height="250"/>
+    </resources>
+</document>
