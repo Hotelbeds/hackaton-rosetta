@@ -6,6 +6,8 @@
  * Copyright (C) 2014 Diego Lafuente.
  */
 var config = require('../../config.js');
+var async = require('async');
+var request = require('request');
 var Log = require('log');
 
 // globals
@@ -31,5 +33,5 @@ exports.sendRequest = function (parameters, callback) {
 	if (!parameters.token) {
 		return callback('no token sent');
 	}
-	
+	//
 };
