@@ -2112,7 +2112,7 @@ a:hover {
 
     .menu.mobile #close_menu {display: none;}
 
-
+.crop {width:100px;overflow:hidden;height:50px;line-height:50px;}
 
 
 
