@@ -8,7 +8,7 @@
 var config = require('../../config.js');
 var eventbriteAPI = require('node-eventbrite');
 var Log = require('log');
-var http = require('http');
+var request = require('request');
 
 // globals
 var log = new Log(config.logLevel);
@@ -52,8 +52,14 @@ exports.sendRequest = function (parameters, callback) {
  */
 function listhotels(radius, paxes, callback, event) {
 
-    var availRequest =  buildAvailRequest(formatEventDate(event.start.local),formatEventDate(event.end.local), paxes, event.venue.latitude, event.venue.longitude, radius);
+    var fromDate = formatEventDate(event.start.local);
+    var toDate = formatEventDate(event.end.local);
+
+    var availRequest =  buildAvailRequest(fromDate,toDate, paxes, event.venue.latitude, event.venue.longitude, radius);
     var jsonRequest = JSON.stringify(availRequest);
+
+
+    log.debug(jsonRequest);
 
     // prepare the header
     var postheaders = {
@@ -61,33 +67,44 @@ function listhotels(radius, paxes, callback, event) {
         'Content-Length' : Buffer.byteLength(jsonRequest, 'utf8')
     };
 
+    //TODO: Ñapa, I don't know how to setup a base URL in request pakage
     var options = {
-        host: config.rosettaUrl,
-        path: '/distribution-api/hotels/default/availability',
+        uri: config.rosettaUrl + '/distribution-api/hotels/default/availability',
         method: 'POST',
-        headers : postheaders
+        json: availRequest
     };
 
-    var reqPost = http.request(options, function(res) {
-        console.log('STATUS: ' + res.statusCode);
-        console.log('HEADERS: ' + JSON.stringify(res.headers));
-        res.setEncoding('utf8');
-        res.on('data', function (availResponse) {
-            var availObject = JSON.parse(availResponse);
-            console.log('availResponse: ' + availObject);
-        });
-    })
+    request(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
 
-    reqPost.write(jsonRequest);
-    reqPost.end();
+            var hotels = new Array();
 
-    reqPost.on('error', function(e) {
-        console.error(e);
-        callback(e,null);
+            for (var i in body.hotels.hotels) {
+                var hbhotel = body.hotels.hotels[i];
+
+                hotels.push({
+                    name:hbhotel.name,
+                    destination:hbhotel.destination,
+                    from: fromDate,
+                    to: toDate,
+                    latitude:hbhotel.latitude,
+                    longitude:hbhotel.longitude,
+                    room:hbhotel.rooms[0].name,
+                    price:hbhotel.rooms[0].prices[0].net,
+                    currency:hbhotel.rooms[0].prices[0].currency,
+                    board:hbhotel.rooms[0].prices[0].boardCode,
+                    reservationKey:hbhotel.rooms[0].prices[0].rateKey
+                });
+
+            }
+            console.log(hotels) // Print the shortened url.
+            return callback(null,hotels);
+
+        } else {
+            console.error(error);
+            callback(error,null);
+        }
     });
-
-
-
 
 }
 
@@ -110,25 +127,20 @@ function buildAvailRequest(from, to, paxes, latitude, longitude, radius) {
             }
         ],
         "limit":{
-            "maxHotels":10
+            "maxHotels":5,
+            "maxRooms":1
         },
         "query":"",
         "language":"ENG",
         "version":"default",
         "provider":"ACE",
         "geolocation":{
-            "radius":latitude,
-            "latitude":longitude,
-            "longitude":radius,
-            "unit":"km"
-        },
-        "destinations": [
-            {
-                "code":""
-            }
-        ]
-
-    }
+            "radius":radius * 1000.0,
+            "latitude":latitude,
+            "longitude":longitude,
+            "unit":"m"
+        }
+    };
 
 
 }
@@ -136,8 +148,8 @@ function buildAvailRequest(from, to, paxes, latitude, longitude, radius) {
 function formatEventDate(dateString) {
     var date = new Date(dateString);
     var yyyy = date.getFullYear().toString();
-    var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based
-    var dd  = date.getDate().toString();
+    var mm = ("0" + (date.getMonth() + 1)).slice(-2)
+    var dd  = ("0" + (date.getDate())).slice(-2);
 
     return yyyy+"-"+mm+"-"+dd;
 }
