@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My City – User page</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<!--Main styles-->
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--Adaptive styles-->
+<link rel="stylesheet" type="text/css" href="css/adaptive.css">
+<!--Swipe menu-->
+<link rel="stylesheet" type="text/css" href="css/pushy.css">
+<!--fonts-->
+<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body onload="initialize()" class="inned">
+<!--navigation swipe-->
+<div class="menu-btn">&#9776;</div>
+<nav class="pushy pushy-left">
+<div class="profile">
+<div class="avatar"><img src="img/avatar/ava_16.jpg" alt="#"><span>5</span></div>
+<h3><a href="03.html">Ananew Matvey</a></h3>
+<a href="03.html#" class="log_btn">Log in</a>
+</div>
+<ul class="side_menu">
+<li><a href="index.html"><i class="fa fa-bookmark-o"></i>Promo page</a></li>
+<li><a href="01.html" class="animsition-link"><i class="fa fa-map-marker"></i>Map</a></li>
+<li><a href="05.html"><i class="fa fa-list"></i>Place list</a></li>
+<li><a href="04.html"><i class="fa fa-th"></i>Place grid</a></li>
+<li><a href="02.html"><i class="fa fa-building-o"></i>Place</a></li>
+<li><a href="03.html"><i class="fa fa-user"></i>User profile</a></li>
+<li><a href="06.html"><i class="fa fa-book"></i>Blog</a></li>
+<li><a href="07.html"><i class="fa fa-file-powerpoint-o"></i>Open post</a></li>
+</ul>
+</nav>
+<!--add-->
+<div class="add_place none" id="pl">
+<div class="place_form">
+<i class="fa fa-times close_window" id="close"></i>
+<h3>Add new place<span></span></h3>
+<form>
+<label>Place name:<input type="text"></label>
+<label>latitude:<input type="text"></label>
+<label>longitude:<input type="text"></label>
+<label>Categori:
+<select>
+<option value="Cafe">Cafe</option>
+<option value="Bar">Bar</option>
+<option value="Cinema">Cinema</option>
+<option value="Shop">Shop</option>
+<option value="Club">Club</option>
+<option value="Bank">Bank</option>
+</select>
+</label>
+<a href="03.html#" class="green_btn_header" id="add">Add</a>
+</form>
+</div>
+</div>
+
+<!--autorization-->
+<div class="add_place none" id="autorized">
+<div class="place_form login_form">
+<i class="fa fa-times close_window" id="closeau"></i>
+<h3>Autorization<span></span></h3>
+<form>
+<label>Login:<input type="text"></label>
+<label>Password:<input type="text"></label>
+<a href="03.html#" class="btn btn-success">Log in</a>
+<a href="03.html#" class="btn btn-primary"><i class="icon-facebook"></i>Log in with Facebook</a>
+</form>
+</div>
+</div>
+<div class="container contant">
+<div class="row">
+<div class="site-overlay"></div>
+
+<!-- Left column-->
+<div class="col-md-3 mobile_none">
+<!--avatar-->
+<div class="user_avatar">
+<img src="img/avatar/ava_big.png" alt="#">
+<span>Ananev Matvey</span>
+</div>
+<div class="user_btn">
+<a href="03.html#" class="btn btn-success">Add to friend</a>
+<a href="03.html#" class="btn btn-danger">Sent message</a>
+</div>
+
+<!--Friends-->
+<!--Friends-->
+<div class="user_friends">
+<h4>Friends:</h4>
+<div class="users_group">
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_11.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_10.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_9.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_8.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_7.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_6.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_5.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_4.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_3.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_2.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_1.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_11.jpg" alt=""></a>
+</div>
+</div>
+</div>
+
+
+<!--content-->
+<div class="col-md-9 basic vp">
+<!--head-->
+<div class="head">
+
+<a href="index.html" class="logo"><img src="img/logo.png" alt="Mycity"/></a>
+<a href="03.html#" class="green_btn_header" id="ad"><i class="fa fa-plus"></i></a><input type="text" class="search" placeholder="search">
+</div>
+<!--User info for mobile visible-->
+<div class="profile_mobile_vis">
+<!--avatar-->
+<div class="user_avatar">
+<img src="img/avatar/ava_big.png" alt="#">
+<span>Ananev Matvey</span>
+<div class="user_btn">
+<a href="03.html#" class="btn btn-success">Add to friend</a>
+<a href="03.html#" class="btn btn-danger">Sent message</a>
+</div>
+</div>
+
+<!--Friends-->
+<div class="profile_mobile_vis">
+<!--Friends-->
+<div class="user_friends">
+<h4>Friends:</h4>
+<div class="users_group">
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_11.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_10.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_9.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_8.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_7.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_6.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_5.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_4.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_3.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_2.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_1.jpg" alt=""></a>
+<a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_11.jpg" alt=""></a>
+</div>
+</div>
+
+</div>
+
+</div>
+<!--visited places-->
+<h1>Visited 7 places</h1>
+<div id="map" class="map_user_visits"></div>
+<!--reviews-->
+<div class="reviews">
+<h4>145 Reviews:</h4>
+
+<!--review-->
+<div class="rev">
+<div class="user"><a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_11.jpg" alt=""></a></div>
+<div class="texts">
+<div class="head_rev"><a href="02.html">Oki doki</a> <span>12.09.2008</span></div>
+<div class="text_rev">Get a history lesson on possibly the world's most famous beverage -- and sample Coca-Cola products from around the globe! Kids will love it...</div>
+</div>
+</div>
+<!--review end-->
+
+<!--review-->
+<div class="rev">
+<div class="user"><a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_3.jpg" alt=""></a></div>
+<div class="texts">
+<div class="head_rev"><a href="02.html">Pizza ricko</a> <span>12.09.2008</span></div>
+<div class="text_rev">Get a history lesson</div>
+</div>
+</div>
+<!--review end-->
+
+<!--review-->
+<div class="rev">
+<div class="user"><a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_4.jpg" alt=""></a></div>
+<div class="texts">
+<div class="head_rev"><a href="02.html">Kafema</a> <span>12.09.2008</span></div>
+<div class="text_rev">Get a history lesson on possibly the world's most famous beverage -- and sample Coca-Cola products from around the globe! Kids will love it...Get a history lesson on possibly the world's most famous beverage -- and sample Coca-Cola products from around the globe! Kids will love it...Get a history lesson on possibly the world's most famous beverage -- and sample Coca-Cola products from around the globe! Kids will love it...</div>
+</div>
+</div>
+<!--review end-->
+
+<!--review-->
+<div class="rev">
+<div class="user"><a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_5.jpg" alt=""></a></div>
+<div class="texts">
+<div class="head_rev"><a href="02.html">Placebo night club</a> <span>12.09.2008</span></div>
+<div class="text_rev">Get a history lesson on possibly the world's most famous beverage</div>
+</div>
+</div>
+<!--review end-->
+
+<!--review-->
+<div class="rev">
+<div class="user"><a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_6.jpg" alt=""></a></div>
+<div class="texts">
+<div class="head_rev"><a href="02.html">Cucko</a> <span>12.09.2008</span></div>
+<div class="text_rev">Get a history lesson</div>
+</div>
+</div>
+<!--review end-->
+
+<!--review-->
+<div class="rev">
+<div class="user"><a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_7.jpg" alt=""></a></div>
+<div class="texts">
+<div class="head_rev"><a href="02.html">Old capitan pub</a> <span>12.09.2008</span></div>
+<div class="text_rev">Get a history lesson on possibly the world's most famous beverage -- and sample Coca-Cola products from around the globe! </div>
+</div>
+</div>
+<!--review end-->
+
+<!--review-->
+<div class="rev">
+<div class="user"><a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_8.jpg" alt=""></a></div>
+<div class="texts">
+<div class="head_rev"><a href="02.html">Matart group ltd</a> <span>12.09.2008</span></div>
+<div class="text_rev">Get a history lesson on possibly the world's most famous beverage </div>
+</div>
+</div>
+<!--review end-->
+
+<!--review-->
+<div class="rev">
+<div class="user"><a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_9.jpg" alt=""></a></div>
+<div class="texts">
+<div class="head_rev"><a href="02.html">Cinema okean</a> <span>12.09.2008</span></div>
+<div class="text_rev">Get a history lesson on possibly the world's most famous beverage -- and sample Coca-Cola products from around the globe! Kids will love it...</div>
+</div>
+</div>
+<!--review end-->
+
+<!--review-->
+<div class="rev">
+<div class="user"><a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_11.jpg" alt=""></a></div>
+<div class="texts">
+<div class="head_rev"><a href="02.html">Dampling republic</a> <span>12.09.2008</span></div>
+<div class="text_rev">Get a history lesson on possibly </div>
+</div>
+</div>
+<!--review end-->
+
+<!--review-->
+<div class="rev">
+<div class="user"><a href="02.html" class="user_avatars">
+<div class="user_go">
+<i class="fa fa-link"></i>
+</div>
+<img src="img/avatar/ava_10.jpg" alt=""></a></div>
+<div class="texts">
+<div class="head_rev"><a href="02.html">Royal burger</a> <span>12.09.2008</span></div>
+<div class="text_rev">Get a history lesson on possibly the world's most famous beverage -- and sample Coca-Cola products from around the globe! Kids will love it...</div>
+</div>
+</div>
+<!--review end-->
+</div>
+
+<!--morebtn-->
+<a href="03.html#" class="more_btn">Load more</a>
+</div>
+</div>
+</div>
+<!--
+#################################
+- SCRIPT FILES -
+#################################
+-->
+<!--Google maps API linl-->
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCsbzuJDUEOoq-jS1HO-LUXW4qo0gW9FNs"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!--Other main scripts-->
+<script src="js/all_scr.js"></script>
+<!--Flickr-->
+<script src="js/jflickrfeed.js"></script>
+<!--Bootstrap js-->  
+<script src="js/bootstrap.min.js"></script>
+<!--Map js-->
+<script type="text/javascript" src="js/map_visits.js"></script>
+<script type="text/javascript" src="js/infobox.js"></script>
+
+</body>
+</html>
