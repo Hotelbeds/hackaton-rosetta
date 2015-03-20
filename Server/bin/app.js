@@ -56,7 +56,7 @@ function serve (request, response) {
 	var service = services[serviceName];
 	service.sendRequest(request.query, function (error, result) {
 		if (error) {
-			return response.status(500).send({error: 'service ' + service + ' returned error: ' + error});
+			return response.status(500).send({error: 'service ' + serviceName + ' returned error: ' + error});
 		}
 		return response.send(result);
 	});

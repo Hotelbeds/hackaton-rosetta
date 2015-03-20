@@ -33,5 +33,70 @@ exports.sendRequest = function (parameters, callback) {
 	if (!parameters.token) {
 		return callback('no token sent');
 	}
-	//
+	// main stream
+	var mainStream = [];
+	// facebook graph url
+	var facebookGraphUrl = 'https://graph.facebook.com/';
+	// get the friends list
+	mainStream.push(function (callback) {
+		log.debug('get friends list');
+		var friendsUrl = facebookGraphUrl + parameters.userId + '/friends?access_token=' + parameters.token;
+		request.get(friendsUrl, function(error, response, body) {
+			if (error) {
+				return callback(error);
+			}
+			var facebookResponse;
+			try
+	        {
+	            facebookResponse = JSON.parse(body);
+	        }
+	        catch(exception)
+	        {
+	            return callback('Could not parse friends response from facebook ' + exception);
+	        }
+	        if (facebookResponse.error) {
+	        	return callback(JSON.stringify(facebookResponse.error));
+	        }
+	        log.debug('returning friends list', facebookResponse.data);
+			return callback(null, facebookResponse.data);
+		});
+	});
+	// get the pictures for each of the friends and return response
+	mainStream.push(function (friends, callback) {
+		log.debug('getting pictures');
+		// create the parallel stream
+		var parallelStream = [];
+		friends.forEach(function (friend) {
+			parallelStream.push(function (callback) {
+				log.debug('getting picture for friend ' + friend.id);
+				var friendsUrl = facebookGraphUrl + friend.id + '/picture?redirect=false';
+				request.get(friendsUrl, function(error, response, body) {
+					if (error) {
+						return callback(error);
+					}
+					var facebookResponse;
+					try
+			        {
+			            facebookResponse = JSON.parse(body);
+			        }
+			        catch(exception)
+			        {
+			            return callback('Could not parse friends response from facebook ' + exception);
+			        }
+					return callback(null, {name: friend.name,
+											picture:facebookResponse.data.url});
+				});
+			});
+		});
+		// run parallel stream
+		async.parallel(parallelStream, function (error, results) {
+			if (error) {
+				return callback(error);
+			}
+			log.debug('parallel', results);
+			return callback(null, results);
+		});
+	});
+	// run main stream
+	async.waterfall(mainStream, callback);
 };
