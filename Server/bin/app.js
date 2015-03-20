@@ -31,7 +31,10 @@ exports.startServer = function(port, callback) {
 	// load services
 	services = readServices();
 	// serve
+    log.debug('Server started listening on port %d', port);
 	server = app.listen(port, callback);
+
+
 };
 
 exports.stopServer = function(callback) {

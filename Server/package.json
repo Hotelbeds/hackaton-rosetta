@@ -19,7 +19,8 @@
     "passport":"0.2.x",
     "passport-facebook":"2.0.x",
     "grunt": "0.4.x",
-    "grunt-contrib-jshint": "0.8.x"
+    "grunt-contrib-jshint": "0.8.x",
+    "node-eventbrite": "0.0.9"
   },
   "scripts": {
     "test": "node test.js"
