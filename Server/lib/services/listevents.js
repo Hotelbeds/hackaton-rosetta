@@ -6,7 +6,6 @@
  * Created by dcastro on 20/3/15.
  */
 var config = require('../../config.js');
-var utils = require('../utils/utils.js');
 var eventbriteAPI = require('node-eventbrite');
 var Log = require('log');
 
@@ -37,7 +36,16 @@ exports.sendRequest = function (parameters, callback) {
     if (typeof parameters.radius === 'undefined' )
         return callback('radius is mandatory', null);
 
-    api.search({ 'location.latitude': parameters.latitude, 'location.longitude':parameters.longitude, 'location.within':parameters.radius+'km' }, function (error, data) {
+    var eventSearch = {
+        'location.latitude': parameters.latitude,
+        'location.longitude':parameters.longitude,
+        'location.within':parameters.radius+'km'
+    }
+
+    if (typeof parameters.categoryId != 'undefined' )
+        eventSearch.categories=parameters.categoryId;
+
+    api.search(eventSearch, function (error, data) {
         if (error) {
             console.log(error.message);
             return callback(error, data);
