@@ -1,4 +1,4 @@
-
+/*
 function initialize() {
 
     //Map parametrs
@@ -64,4 +64,4 @@ function initialize() {
 };
 
     
-    
+    */

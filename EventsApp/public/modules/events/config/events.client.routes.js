@@ -11,6 +11,10 @@ angular.module('events').config(['$stateProvider', '$urlRouterProvider',
 		state('events', {
 			url: '/events',
 			templateUrl: 'modules/events/views/events.client.view.html'
+		}).
+		state('invite', {
+			url: '/invite',
+			templateUrl: 'modules/invite/views/invite.client.view.html'
 		});
 	}
 ]);
