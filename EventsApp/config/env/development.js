@@ -6,8 +6,8 @@ module.exports = {
 		title: 'EventsApp - Development Environment'
 	},
 	facebook: {
-		clientID: process.env.FACEBOOK_ID || 'APP_ID',
-		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
+		clientID: '914123651941785',
+		clientSecret: '8d6f73fb0b29c4fe5e0bc021c24ba1ce',
 		callbackURL: '/auth/facebook/callback'
 	},
 	twitter: {

@@ -27,7 +27,7 @@ module.exports = function(app) {
 
 	// Setting the facebook oauth routes
 	app.route('/auth/facebook').get(passport.authenticate('facebook', {
-		scope: ['email']
+		scope: ['email','user_friends']
 	}));
 	app.route('/auth/facebook/callback').get(users.oauthCallback('facebook'));
 
