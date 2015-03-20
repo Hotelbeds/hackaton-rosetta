@@ -1,4 +1,7 @@
-'use strict';
+/**
+ * Created by dcastro on 20/3/15.
+ */
+
 
 /*
  * List hotels for a certain event service
@@ -24,39 +27,34 @@ try {
 }
 
 /**
- * Sends a request to Eventbrite for a given event id, and returns hotels in the nearby
+ * Sends a request to Rosetta for a given latitude, longitude, radius, dates and paxes returns hotels in the nearby
  * @param parameters[required] A dictionary with the parameters of the request. event id, radius, paxes.
  * @param callback[required] A callback following the template (error, result) to return the results.
  */
 exports.sendRequest = function (parameters, callback) {
-    if (typeof parameters.eventid === 'undefined' )
-        return callback('eventid is mandatory', null);
+    if (typeof parameters.latitude === 'undefined' )
+        return callback('latitude is mandatory', null);
+    if (typeof parameters.longitude === 'undefined' )
+        return callback('longitude is mandatory', null);
     if (typeof parameters.paxes === 'undefined' )
         return callback('paxes is mandatory', null);
     if (typeof parameters.radius === 'undefined' )
         return callback('radius is mandatory', null);
+    if (typeof parameters.from === 'undefined' )
+        return callback('from date is mandatory', null);
+    if (typeof parameters.to === 'undefined' )
+        return callback('to date is mandatory', null);
 
-    api.event_details({ 'event_id':parameters.eventid}, function (error, event) {
-        if (error) {
-            console.log(error.message);
-            return callback(error, data);
-        } else {
 
-            console.log(event); // Print the the eventbrite event
-            return listhotels(parameters.radius,parameters.paxes,callback, event);
-        }
-    });
+    return listhotels(parameters.paxes,parameters.latitude,parameters.longitude, parameters.radius, parameters.from, parameters.to,callback);
 };
 
 /**
  * Connect to the database.
  */
-function listhotels(radius, paxes, callback, event) {
+function listhotels(paxes, latitude, longitude,radius, fromDate, toDate, callback) {
 
-    var fromDate = utils.formatEventDate(event.start.local);
-    var toDate = utils.formatEventDate(event.end.local);
-
-    var availRequest =  utils.buildAvailRequest(fromDate,toDate, paxes, event.venue.latitude, event.venue.longitude, radius);
+    var availRequest =  utils.buildAvailRequest(fromDate,toDate, paxes, latitude, longitude, radius);
     var jsonRequest = JSON.stringify(availRequest);
 
 
@@ -108,3 +106,4 @@ function listhotels(radius, paxes, callback, event) {
     });
 
 }
+

@@ -6,6 +6,7 @@
  * Created by dcastro on 20/3/15.
  */
 var config = require('../../config.js');
+var utils = require('../utils/utils.js');
 var eventbriteAPI = require('node-eventbrite');
 var Log = require('log');
 
