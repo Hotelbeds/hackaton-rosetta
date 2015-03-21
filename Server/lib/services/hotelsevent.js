@@ -83,7 +83,7 @@ function listhotels(radius, paxes, callback, event) {
             for (var i in body.hotels.hotels) {
                 var hbhotel = body.hotels.hotels[i];
 
-                hotels.push(hotels.push(utils.buildHotel(hbhotel,fromDate,toDate)));
+                hotels.push(utils.buildHotel(hbhotel,fromDate,toDate));
 
             }
             console.log(hotels) // Print the shortened url.
