@@ -9,6 +9,9 @@
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
 #import "NetworkClient.h"
+#import "NSDate+Rosette.h"
+#import "NSDictionary+UrlEncoding.h"
+#import <libextobjc/EXTScope.h>
 
 @interface MapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -65,7 +68,23 @@
 }
 
 - (void)drawHotelsForLocation:(CLLocationCoordinate2D)location {
-    
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setDay:2];
+    NSDate *toDate = [[NSCalendar currentCalendar] dateByAddingComponents:offsetComponents toDate:_entryDate options:0];
+    NSDictionary *parameters = @{
+                                 @"latitude":@(location.latitude),
+                                 @"longitude":@(location.longitude),
+                                 @"paxes":@1,
+                                 @"radius":@2.0,
+                                 @"from":[_entryDate rosettaStringDateFromNSDate],
+                                 @"to":[toDate rosettaStringDateFromNSDate]
+                                 };
+    NSString *hotelsUrlString = [NSString stringWithFormat:@"http://localhost:8080/api/hotelsavail?%@", [parameters urlEncodedString]];
+    NSURL *hotelsUrl = [NSURL URLWithString:hotelsUrlString];
+    @weakify(self);
+    [[NetworkClient sharedInstance] GETRequestWithURL:hotelsUrl parameters:parameters completion:^(NSError *error, id result) {
+        @strongify(self);
+    }];
 }
 
 
