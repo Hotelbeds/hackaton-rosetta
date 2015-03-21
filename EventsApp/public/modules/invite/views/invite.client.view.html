@@ -1,3 +1,66 @@
-<section data-ng-controller="InviteController" class="inned">
-<div ngClick="currentEvent();">click</div>
+<section data-ng-controller="InviteController" class="indexpage">
+	<div class="site-overlay"></div>
+
+	<!-- Header -->
+	<div class="container-fluid header" data-ng-include="'/modules/core/views/header.client.view.html'">
+	</div>
+
+	<div class="container contant">
+		<div class="row" data-ng-show="authentication.user">
+			<div class="col-md9 basic">
+				<div class="head"></div>
+				<div class="header_section" style="background:url({{event.logo}}) no-repeat;">
+					<h1>{{event.name}}</h1>
+				</div>
+				<div class="icon_descr_block">
+					<div class="cols">
+						<div id="hacker-list">
+    						<input class="search" />
+    						<button type="button" class="btn btn-primary" data-sort="name">Invite your friend!</button>
+						    <ul class="list">
+						       <li>
+						           <h3 class="name">Jonny</h3>
+						           <p class="city">Stockholm</p>
+						       </li>
+						       <li>
+						           <h3 class="name">Jonas</h3>
+						           <p class="city">Berlin</p>
+						       </li>
+						    </ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" data-ng-show="!authentication.user">
+			<div class="col-md9 basic">
+				<div class="head"></div>
+				<section class="row ng-scope" data-ng-controller="AuthenticationController">
+					<h3 class="col-md-12 text-center">Sign in using your social accounts</h3>
+					<div class="col-md-12 text-center">
+						<a href="/auth/facebook" class="undecorated-link">
+							<img src="/modules/users/img/buttons/facebook.png">
+						</a>
+						<a href="/auth/twitter" class="undecorated-link">
+							<img src="/modules/users/img/buttons/twitter.png">
+						</a>
+						<a href="/auth/google" class="undecorated-link">
+							<img src="/modules/users/img/buttons/google.png">
+						</a>
+						<a href="/auth/linkedin" class="undecorated-link">
+							<img src="/modules/users/img/buttons/linkedin.png">
+						</a>
+						<a href="/auth/github" class="undecorated-link">
+							<img src="/modules/users/img/buttons/github.png">
+						</a>
+					</div>
+				</section>
+				<div class="alert alert-danger" role="alert">Please log with your social account</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer menu 
+	<div class="container-fluid menu mobile" data-ng-include="'/modules/core/views/footer.client.view.html'">
+	</div> -->
 </section>

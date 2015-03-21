@@ -43,13 +43,10 @@
     <![endif]-->
 </head>
 
-<body class="ng-cloak promo">
+<body class="ng-cloak">
     <!-- header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header -->
-    <section class="">
-        <section class="">
-            {% block content %}{% endblock %}
-        </section>
-    </section>
+        
+    {% block content %}{% endblock %}
 
     <!--Embedding The User Object-->
     <script type="text/javascript">
