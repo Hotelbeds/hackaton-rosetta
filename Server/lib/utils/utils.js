@@ -56,7 +56,7 @@ module.exports = {
         return rateKey.replace("#","*");
     },
 
-    unformatRateKey : function () {
+    unformatRateKey : function (rateKey) {
         return rateKey.replace("*","#")
     }
 }

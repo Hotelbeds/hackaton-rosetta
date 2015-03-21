@@ -60,7 +60,7 @@ exports.sendRequest = function (parameters, callback) {
                     'category':ebevent.category_id,
                     'currency':ebevent.currency,
                     'price': 100,
-                    'description': ebevent.description.text,
+                    'description': (ebevent.description === null) ? "No Description" : ebevent.description.text,
                     'name': ebevent.name.text,
                     'logo': ebevent.logo_url,
                     'start': ebevent.start.local,
