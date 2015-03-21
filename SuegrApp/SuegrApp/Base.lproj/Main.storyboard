@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JTw-LK-gJH">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Panic View Controller-->
@@ -250,11 +251,186 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="Ttg-ge-eD6" id="wRj-E1-8S3"/>
+                        <segue destination="HOf-Uo-FOe" kind="show" identifier="BookHotel" id="ICd-WN-9aC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vvu-uf-Rdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1557" y="164.25"/>
+            <point key="canvasLocation" x="1603.5" y="164.25"/>
+        </scene>
+        <!--Confirmation View Controller-->
+        <scene sceneID="3Yz-Hh-R9x">
+            <objects>
+                <viewController id="HOf-Uo-FOe" customClass="ConfirmationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="llE-KR-Wak"/>
+                        <viewControllerLayoutGuide type="bottom" id="PxJ-kN-ix0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pVW-mD-rTJ">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="CN9-gU-gJ1">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESERVA CONFIRMADA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8d-88-z2D">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="8A2-8G-BfN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8A2-8G-BfN"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="8A2-8G-BfN"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hotel Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZ5-5v-ayn">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCd-SA-bDF">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dates" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2I-qs-oUS">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distances" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXo-kE-waH">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vb-Ne-PST">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" backgroundImage="panic-glass.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="A4c-lZ-NYA" kind="show" id="dFI-hG-Vgu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sXo-kE-waH" firstAttribute="centerX" secondItem="CN9-gU-gJ1" secondAttribute="centerX" id="3wT-OI-8kh"/>
+                            <constraint firstItem="CN9-gU-gJ1" firstAttribute="leading" secondItem="pVW-mD-rTJ" secondAttribute="leading" id="4Vn-kw-tWe"/>
+                            <constraint firstItem="uZ5-5v-ayn" firstAttribute="top" secondItem="U8d-88-z2D" secondAttribute="bottom" constant="8" symbolic="YES" id="4gh-Cz-nH9"/>
+                            <constraint firstItem="sXo-kE-waH" firstAttribute="trailing" secondItem="X2I-qs-oUS" secondAttribute="trailing" id="7I7-li-GnS"/>
+                            <constraint firstItem="U8d-88-z2D" firstAttribute="leading" secondItem="uZ5-5v-ayn" secondAttribute="leading" id="CP2-pa-PCa"/>
+                            <constraint firstItem="bCd-SA-bDF" firstAttribute="trailing" secondItem="X2I-qs-oUS" secondAttribute="trailing" id="E81-gN-GLz"/>
+                            <constraint firstItem="bCd-SA-bDF" firstAttribute="leading" secondItem="pVW-mD-rTJ" secondAttribute="leadingMargin" id="MbP-3v-ORR"/>
+                            <constraint firstItem="CN9-gU-gJ1" firstAttribute="bottom" secondItem="PxJ-kN-ix0" secondAttribute="top" id="Nv4-VO-Mth"/>
+                            <constraint firstItem="U8d-88-z2D" firstAttribute="top" secondItem="llE-KR-Wak" secondAttribute="bottom" id="PTA-4C-0mD"/>
+                            <constraint firstAttribute="trailing" secondItem="U8d-88-z2D" secondAttribute="trailing" id="SPA-AT-1BJ"/>
+                            <constraint firstItem="3vb-Ne-PST" firstAttribute="centerY" secondItem="CN9-gU-gJ1" secondAttribute="centerY" id="VN2-di-LPu"/>
+                            <constraint firstItem="bCd-SA-bDF" firstAttribute="top" secondItem="uZ5-5v-ayn" secondAttribute="bottom" constant="8" symbolic="YES" id="bSh-XJ-EXy"/>
+                            <constraint firstItem="CN9-gU-gJ1" firstAttribute="top" secondItem="pVW-mD-rTJ" secondAttribute="top" id="bjT-NM-lgc"/>
+                            <constraint firstItem="bCd-SA-bDF" firstAttribute="leading" secondItem="uZ5-5v-ayn" secondAttribute="leading" id="cro-kA-0Kv"/>
+                            <constraint firstItem="sXo-kE-waH" firstAttribute="top" secondItem="X2I-qs-oUS" secondAttribute="bottom" constant="8" symbolic="YES" id="dvb-2I-lzX"/>
+                            <constraint firstItem="bCd-SA-bDF" firstAttribute="leading" secondItem="X2I-qs-oUS" secondAttribute="leading" id="gYU-Uh-Wrr"/>
+                            <constraint firstItem="sXo-kE-waH" firstAttribute="centerX" secondItem="3vb-Ne-PST" secondAttribute="centerX" id="gYk-uj-H4H"/>
+                            <constraint firstItem="U8d-88-z2D" firstAttribute="trailing" secondItem="CN9-gU-gJ1" secondAttribute="trailing" id="qCL-5F-eMH"/>
+                            <constraint firstItem="bCd-SA-bDF" firstAttribute="trailing" secondItem="uZ5-5v-ayn" secondAttribute="trailing" id="ue0-It-g4i"/>
+                            <constraint firstItem="X2I-qs-oUS" firstAttribute="leading" secondItem="sXo-kE-waH" secondAttribute="leading" id="xE2-1a-Buk"/>
+                            <constraint firstItem="X2I-qs-oUS" firstAttribute="top" secondItem="bCd-SA-bDF" secondAttribute="bottom" constant="8" symbolic="YES" id="y5d-PZ-8dQ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="CN9-gU-gJ1"/>
+                                <exclude reference="U8d-88-z2D"/>
+                                <exclude reference="uZ5-5v-ayn"/>
+                                <exclude reference="bCd-SA-bDF"/>
+                                <exclude reference="X2I-qs-oUS"/>
+                                <exclude reference="sXo-kE-waH"/>
+                                <exclude reference="3vb-Ne-PST"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="4Vn-kw-tWe"/>
+                                <exclude reference="Nv4-VO-Mth"/>
+                                <exclude reference="bjT-NM-lgc"/>
+                                <exclude reference="CP2-pa-PCa"/>
+                                <exclude reference="PTA-4C-0mD"/>
+                                <exclude reference="SPA-AT-1BJ"/>
+                                <exclude reference="qCL-5F-eMH"/>
+                                <exclude reference="4gh-Cz-nH9"/>
+                                <exclude reference="E81-gN-GLz"/>
+                                <exclude reference="MbP-3v-ORR"/>
+                                <exclude reference="bSh-XJ-EXy"/>
+                                <exclude reference="cro-kA-0Kv"/>
+                                <exclude reference="gYU-Uh-Wrr"/>
+                                <exclude reference="ue0-It-g4i"/>
+                                <exclude reference="xE2-1a-Buk"/>
+                                <exclude reference="y5d-PZ-8dQ"/>
+                                <exclude reference="3wT-OI-8kh"/>
+                                <exclude reference="7I7-li-GnS"/>
+                                <exclude reference="dvb-2I-lzX"/>
+                                <exclude reference="gYk-uj-H4H"/>
+                                <exclude reference="VN2-di-LPu"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="CN9-gU-gJ1"/>
+                                <include reference="U8d-88-z2D"/>
+                                <include reference="uZ5-5v-ayn"/>
+                                <include reference="bCd-SA-bDF"/>
+                                <include reference="X2I-qs-oUS"/>
+                                <include reference="sXo-kE-waH"/>
+                                <include reference="3vb-Ne-PST"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="4Vn-kw-tWe"/>
+                                <include reference="Nv4-VO-Mth"/>
+                                <include reference="bjT-NM-lgc"/>
+                                <include reference="CP2-pa-PCa"/>
+                                <include reference="PTA-4C-0mD"/>
+                                <include reference="SPA-AT-1BJ"/>
+                                <include reference="qCL-5F-eMH"/>
+                                <include reference="4gh-Cz-nH9"/>
+                                <include reference="E81-gN-GLz"/>
+                                <include reference="MbP-3v-ORR"/>
+                                <include reference="bSh-XJ-EXy"/>
+                                <include reference="cro-kA-0Kv"/>
+                                <include reference="gYU-Uh-Wrr"/>
+                                <include reference="ue0-It-g4i"/>
+                                <include reference="xE2-1a-Buk"/>
+                                <include reference="y5d-PZ-8dQ"/>
+                                <include reference="3wT-OI-8kh"/>
+                                <include reference="7I7-li-GnS"/>
+                                <include reference="dvb-2I-lzX"/>
+                                <include reference="gYk-uj-H4H"/>
+                                <include reference="VN2-di-LPu"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="backgoundImageView" destination="CN9-gU-gJ1" id="ABC-zv-TJd"/>
+                        <outlet property="datesLabel" destination="X2I-qs-oUS" id="O2y-hx-Vxw"/>
+                        <outlet property="distancesLabel" destination="sXo-kE-waH" id="EEK-wd-IfJ"/>
+                        <outlet property="hotelNameLabel" destination="uZ5-5v-ayn" id="qMb-24-byk"/>
+                        <outlet property="hotelPriceLabel" destination="bCd-SA-bDF" id="xYd-le-SsL"/>
+                        <outlet property="panicButton" destination="3vb-Ne-PST" id="j25-Cb-EEW"/>
+                        <outlet property="titleLabel" destination="U8d-88-z2D" id="5PM-6j-8TK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nG2-i1-Cqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2302.5" y="164.25"/>
         </scene>
         <!--Countdown View Controller-->
         <scene sceneID="nIQ-yK-3F4">
@@ -267,28 +443,43 @@
                     <view key="view" contentMode="scaleToFill" id="Iia-lT-rbm">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CountdownViewController" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUc-E7-YEu">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="100" y="389" width="201" height="21"/>
-                                </variation>
-                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="QJP-qA-o6m">
+                                <rect key="frame" x="-160" y="-81" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="448639843.58130801">
+                                    <!--2015-03-21 14:10:43 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QJP-qA-o6m" secondAttribute="trailing" id="DRn-Bl-Q3q"/>
+                            <constraint firstItem="QJP-qA-o6m" firstAttribute="leading" secondItem="Iia-lT-rbm" secondAttribute="leading" id="GUg-4r-27B"/>
+                            <constraint firstItem="QJP-qA-o6m" firstAttribute="centerY" secondItem="Iia-lT-rbm" secondAttribute="centerY" id="ihJ-wQ-sYK"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="lUc-E7-YEu"/>
+                                <exclude reference="QJP-qA-o6m"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="DRn-Bl-Q3q"/>
+                                <exclude reference="GUg-4r-27B"/>
+                                <exclude reference="ihJ-wQ-sYK"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="lUc-E7-YEu"/>
+                                <include reference="QJP-qA-o6m"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="DRn-Bl-Q3q"/>
+                                <include reference="GUg-4r-27B"/>
+                                <include reference="ihJ-wQ-sYK"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="QJP-qA-o6m" id="GWD-ft-b9t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5UK-0u-Su0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

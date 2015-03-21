@@ -28,6 +28,8 @@
 		76B121131ABD7BF8008F9A66 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B121121ABD7BF8008F9A66 /* DatePickerViewController.m */; };
 		76B121161ABD8034008F9A66 /* NSDate+Rosette.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B121151ABD8034008F9A66 /* NSDate+Rosette.m */; };
 		76B121191ABD842A008F9A66 /* NSDictionary+UrlEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B121181ABD842A008F9A66 /* NSDictionary+UrlEncoding.m */; };
+		76B1211C1ABD97F7008F9A66 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B1211B1ABD97F7008F9A66 /* ConfirmationViewController.m */; };
+		76B1211F1ABDA490008F9A66 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B1211E1ABDA490008F9A66 /* Annotation.m */; };
 		81B276C28D24E13C87EB7BF5 /* libPods-SuegrApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FCF80BB3E9CC6FE612B135 /* libPods-SuegrApp.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +79,10 @@
 		76B121151ABD8034008F9A66 /* NSDate+Rosette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Rosette.m"; sourceTree = "<group>"; };
 		76B121171ABD842A008F9A66 /* NSDictionary+UrlEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+UrlEncoding.h"; sourceTree = "<group>"; };
 		76B121181ABD842A008F9A66 /* NSDictionary+UrlEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+UrlEncoding.m"; sourceTree = "<group>"; };
+		76B1211A1ABD97F7008F9A66 /* ConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationViewController.h; sourceTree = "<group>"; };
+		76B1211B1ABD97F7008F9A66 /* ConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationViewController.m; sourceTree = "<group>"; };
+		76B1211D1ABDA490008F9A66 /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
+		76B1211E1ABDA490008F9A66 /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
 		D5FCF80BB3E9CC6FE612B135 /* libPods-SuegrApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SuegrApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -153,6 +159,10 @@
 				76B121151ABD8034008F9A66 /* NSDate+Rosette.m */,
 				76B121171ABD842A008F9A66 /* NSDictionary+UrlEncoding.h */,
 				76B121181ABD842A008F9A66 /* NSDictionary+UrlEncoding.m */,
+				76B1211A1ABD97F7008F9A66 /* ConfirmationViewController.h */,
+				76B1211B1ABD97F7008F9A66 /* ConfirmationViewController.m */,
+				76B1211D1ABDA490008F9A66 /* Annotation.h */,
+				76B1211E1ABDA490008F9A66 /* Annotation.m */,
 			);
 			path = SuegrApp;
 			sourceTree = "<group>";
@@ -363,8 +373,10 @@
 				76B121161ABD8034008F9A66 /* NSDate+Rosette.m in Sources */,
 				76B121041ABD605A008F9A66 /* MapViewController.m in Sources */,
 				76B1210C1ABD74CD008F9A66 /* NetworkClient.m in Sources */,
+				76B1211F1ABDA490008F9A66 /* Annotation.m in Sources */,
 				76B120F11ABCAAEA008F9A66 /* PanicViewController.m in Sources */,
 				76B120CC1ABCA4B7008F9A66 /* main.m in Sources */,
+				76B1211C1ABD97F7008F9A66 /* ConfirmationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
