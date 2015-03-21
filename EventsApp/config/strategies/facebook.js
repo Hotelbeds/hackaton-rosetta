@@ -7,7 +7,8 @@ var passport = require('passport'),
 	url = require('url'),
 	FacebookStrategy = require('passport-facebook').Strategy,
 	config = require('../config'),
-	users = require('../../app/controllers/users.server.controller');
+	users = require('../../app/controllers/users.server.controller'),
+	http = require('http');
 
 module.exports = function() {
 	// Use facebook strategy
@@ -23,6 +24,23 @@ module.exports = function() {
 			providerData.accessToken = accessToken;
 			providerData.refreshToken = refreshToken;
 
+			/*var req = {
+				method: 'GET',
+				url: 'http://facebook.com/'+profile.id+'/picture',
+				headers: {
+					'Content-Type': undefined
+				},
+				params: { redirect: false },
+			}
+
+			http(req).
+	  			success(function(data, status, headers, config) {    					
+	    			console.log(data.url);
+				}).
+	  			error(function(data, status, headers, config) {
+	    			console.log(data);
+	  			});	
+			*/
 			// Create the user OAuth profile
 			var providerUserProfile = {
 				firstName: profile.name.givenName,

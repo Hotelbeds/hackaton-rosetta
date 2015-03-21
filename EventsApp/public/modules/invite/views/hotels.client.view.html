@@ -16,10 +16,11 @@
 					<div class="cols">
 						<div id="hacker-list">
     						<input class="search" />
-    						<button type="button" class="btn btn-primary" data-sort="name">Invite your friend!</button>
+    						<button type="button" class="btn btn-primary" data-sort="name">Search hotel!</button>
 						    <ul class="list">
-						       <li style="list-style-type:none" ng-repeat="friend in friends" on-finish-render="prepareList();">
-						           <h3 class="name"><img alt src='{{friend.picture}}'>{{friend.name}}</h3>
+						       <li ng-repeat="hotel in hotels">
+						           <h3 class="name">{{hotel.name}}</h3>
+						           <p><img alt src='{{hotel.picture}}'></p>
 						       </li>
 						    </ul>
 						</div>
@@ -59,4 +60,3 @@
 	<div class="container-fluid menu mobile" data-ng-include="'/modules/core/views/footer.client.view.html'">
 	</div> -->
 </section>
-

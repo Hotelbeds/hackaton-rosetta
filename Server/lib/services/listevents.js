@@ -6,6 +6,7 @@
  * Created by dcastro on 20/3/15.
  */
 var config = require('../../config.js');
+var utils = require('../utils/utils');
 var eventbriteAPI = require('node-eventbrite');
 var Log = require('log');
 
@@ -55,20 +56,7 @@ exports.sendRequest = function (parameters, callback) {
             for (var i in data.events) {
                 var ebevent = data.events[i];
 
-                events.push({
-                    'id': ebevent.id,
-                    'category':ebevent.category_id,
-                    'currency':ebevent.currency,
-                    'price': 100,
-                    'description': (ebevent.description === null) ? "No Description" : ebevent.description.text,
-                    'name': ebevent.name.text,
-                    'logo': ebevent.logo_url,
-                    'start': ebevent.start.local,
-                    'end': ebevent.end.local,
-                    'latitude':ebevent.venue.latitude,
-                    'longitude':ebevent.venue.longitude,
-                    'venue':ebevent.venue.name
-                });
+                events.push(utils.buildEvent(ebevent));
 
             }
             console.log(events); // Print the events

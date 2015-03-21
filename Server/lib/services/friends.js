@@ -83,7 +83,8 @@ exports.sendRequest = function (parameters, callback) {
 			        {
 			            return callback('Could not parse friends response from facebook ' + exception);
 			        }
-					return callback(null, {name: friend.name,
+					return callback(null, { id: friend.id,
+                                            name: friend.name,
 											picture:facebookResponse.data.url});
 				});
 			});

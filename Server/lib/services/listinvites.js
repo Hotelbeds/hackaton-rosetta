@@ -22,6 +22,10 @@ exports.sendRequest = function (parameters, callback) {
     parameters.pending = parameters.invites;
     // main stream
     var mainStream = [];
+    var results = {
+        owned : new Array(),
+        invited : new Array()
+    };
     // open database
     mainStream.push(function (callback) {
         db.addCallback(function(error, result) {
@@ -32,15 +36,40 @@ exports.sendRequest = function (parameters, callback) {
             return callback(null, invitationsCollection);
         });
     });
-    // update record
+    //look for owned events
     mainStream.push(function (invitationsCollection, callback) {
-        invitationsCollection.update(
-            {owner:parameters.owner,
-                event:parameters.eventId, hotel:utils.unformatRateKey(parameters.reservationKey)
-            }, {'$set':parameters}, {upsert:true}, callback);
+        invitationsCollection.find({owner: parameters.userId}).toArray(function(err, invites) {
+
+            for (var i in invites) {
+                var invite = invites[i];
+                results.owned.push(utils.buildInvitation(invite._id.toString(), parameters.userId, invite.eventId, invite.hotelId, invite.invites, invite.pending));
+            }
+
+            return callback(null, invitationsCollection);
+
+        });
+
     });
+    //look for participating events
+    mainStream.push(function (invitationsCollection, callback) {
+        invitationsCollection.find({invites: parameters.userId}).toArray(function(err, invites) {
+
+            for (var i in invites) {
+                var invite = invites[i];
+                results.invited.push(utils.buildInvitation(invite._id.toString(), invite.owner, invite.eventId, invite.hotelId, invite.invites, invite.pending));
+            }
+
+            return callback(null, results);
+
+        });
+
+    });
+
+
+
     // run mainstream
-    async.waterfall(mainStream, function (error) {
-        return callback (error, null);
-    });
+    async.waterfall(mainStream, callback);
 }
+
+
+

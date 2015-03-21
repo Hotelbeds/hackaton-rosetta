@@ -134,7 +134,7 @@ angular.module('events').controller('EventsController', ['$scope', 'Authenticati
 		        navigator.geolocation.getCurrentPosition(function(position){
 		        	var req = {
 						method: 'GET',
-					 	url: 'http://192.168.1.11:8080/api/listevents',
+					 	url: 'http://10.162.127.16:8080/api/listevents',
 					 	headers: {
 					   	'Content-Type': undefined
 					 	},
