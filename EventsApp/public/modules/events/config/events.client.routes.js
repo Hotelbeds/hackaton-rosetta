@@ -1,24 +1,17 @@
 'use strict';
 
 // Setting up route
-angular.module('core').config(['$stateProvider', '$urlRouterProvider',
+angular.module('events').config(['$stateProvider', '$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider) {
 		// Redirect to home view when route not found
-		$urlRouterProvider.otherwise('/');
+
+		console.log($urlRouterProvider);
 
 		// Home state routing
 		$stateProvider.
 		state('events', {
 			url: '/events',
 			templateUrl: 'modules/events/views/events.client.view.html'
-		}).
-		state('invite', {
-			url: '/invite',
-			templateUrl: 'modules/invite/views/invite.client.view.html'
-		}).
-		state('hotels', {
-			url: '/hotels',
-			templateUrl: 'modules/invite/views/hotels.client.view.html'
-		});;
+		});
 	}
 ]);

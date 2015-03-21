@@ -34,16 +34,31 @@ angular.module('invite').controller('InviteController', ['$scope', 'Authenticati
 				});
 		}
 
-
-		$scope.event = $scope.currentEvent();
-
-		angular.element(document).ready(function() {
-			//initialize();
+		$scope.prepareList = function () {
 			var options = {
     			valueNames: [ 'name', 'city' ]
 			};
-
 			var hackerList = new List('hacker-list', options);
-		});
+		}
+
+		if (Authentication.user && Authentication.user.providerData && Authentication.user.providerData.accessToken) {
+				var req = {
+						method: 'GET',
+						url: 'http://10.162.127.16:8080/api/friends',
+						headers: {
+						   	'Content-Type': undefined
+						},
+						params: { userId: Authentication.user.providerData.id, token: Authentication.user.providerData.accessToken},
+				}
+	        	$http(req).
+					success(function(data, status, headers, config) {    					
+						$scope.friends = data;
+						$scope.event = $scope.currentEvent();
+						return false;
+					}).
+					error(function(data, status, headers, config) {
+						console.log(data);
+					});
+		}
 	}
 ]);
