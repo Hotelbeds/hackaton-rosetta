@@ -62,7 +62,7 @@
     region.span = span;
     region.center = location;
     [aMapView setRegion:region animated:YES];
-    if (_drawHotels) {
+    if (!_drawHotels) {
         [self drawHotelsForLocation:location];
     }
 }
@@ -83,8 +83,48 @@
     NSURL *hotelsUrl = [NSURL URLWithString:hotelsUrlString];
     @weakify(self);
     [[NetworkClient sharedInstance] GETRequestWithURL:hotelsUrl parameters:parameters completion:^(NSError *error, id result) {
-        @strongify(self);
+        // we need to get walking distances now, and then paint the annotations
+        NSString *origins = [NSString stringWithFormat:@"%f,%f", location.latitude, location.longitude];
+        for (NSDictionary *hotel in result) {
+            NSString *destinations = [NSString stringWithFormat:@"%@,%@", hotel[@"latitude"], hotel[@"longitude"]];
+            NSDictionary *parameters = @{
+                                         @"origins": origins,
+                                         @"destinations": destinations,
+                                         @"sensors":@NO,
+                                         @"mode":@"walking",
+                                         @"units":@"metric"};
+            NSString *googleapisUrlString = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/distancematrix/json?%@", [parameters urlEncodedString]];
+            NSURL *googleapisUrl = [NSURL URLWithString:googleapisUrlString];
+            [[NetworkClient sharedInstance] GETRequestWithURL:googleapisUrl parameters:parameters completion:^(NSError *error, id result) {
+                @strongify(self);
+                MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+                point.coordinate = CLLocationCoordinate2DMake([hotel[@"latitude"] doubleValue], [hotel[@"longitude"] doubleValue]);
+                point.title = hotel[@"name"];
+                point.subtitle = [NSString stringWithFormat:@"Price: %@ - %@ - %@", hotel[@"price"], result[@"rows"][0][@"elements"][0][@"distance"][@"text"], result[@"rows"][0][@"elements"][0][@"duration"][@"text"]];
+                
+                [self.mapView addAnnotation:point];
+            }];
+        }
+        
     }];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    if([annotation isEqual:[mapView userLocation]]) {
+        return nil;
+    }
+    MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"loc"];
+    annotationView.canShowCallout = YES;
+    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    
+    return annotationView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    NSLog(@"Tapped: %@", view.annotation.title);
+    //[self performSegueWithIdentifier:@"DetailsIphone" sender:view];
 }
 
 

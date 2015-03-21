@@ -13,7 +13,7 @@
 - (NSString *)rosettaStringDateFromNSDate {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-    dateFormatter.dateFormat = @"yyyyMMdd";
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
     
     return [dateFormatter stringFromDate:self];
 }
