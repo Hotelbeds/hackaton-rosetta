@@ -6,6 +6,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 target "SuegrApp" do
 
 pod 'AFNetworking', '~> 2.1'
+pod 'libextobjc', '~>0.4'
 
 end
 
