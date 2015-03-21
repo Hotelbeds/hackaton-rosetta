@@ -34,6 +34,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     MapViewController *destinationViewController = [segue destinationViewController];
     destinationViewController.entryDate = _datePicker.date;
+    [[NSUserDefaults standardUserDefaults] setObject:_datePicker.date forKey:@"panicked"];
 }
 
 

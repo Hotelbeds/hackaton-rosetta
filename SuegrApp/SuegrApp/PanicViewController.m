@@ -37,6 +37,5 @@
 */
 
 - (IBAction)panicButtonClicked:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"panicked"];
 }
 @end

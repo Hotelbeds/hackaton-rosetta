@@ -443,42 +443,122 @@
                     <view key="view" contentMode="scaleToFill" id="Iia-lT-rbm">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="QJP-qA-o6m">
-                                <rect key="frame" x="-160" y="-81" width="320" height="162"/>
-                                <date key="date" timeIntervalSinceReferenceDate="448639843.58130801">
-                                    <!--2015-03-21 14:10:43 +0000-->
-                                </date>
-                            </datePicker>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="eeo-Ok-cHb">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgW-8f-1OF">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="11" width="102" height="76"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMa-OK-4Pw">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="124" width="102" height="76"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1d-CG-KM2">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="222" width="102" height="76"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="54" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1d-nY-DLQ">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="335" width="102" height="76"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Días" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDR-hg-H9F">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="162" y="11" width="170" height="76"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Horas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiZ-B7-gsi">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="162" y="124" width="170" height="76"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJJ-92-MId">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="162" y="222" width="170" height="76"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Segundos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAd-5B-k7x">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="162" y="335" width="170" height="76"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="QJP-qA-o6m" secondAttribute="trailing" id="DRn-Bl-Q3q"/>
-                            <constraint firstItem="QJP-qA-o6m" firstAttribute="leading" secondItem="Iia-lT-rbm" secondAttribute="leading" id="GUg-4r-27B"/>
-                            <constraint firstItem="QJP-qA-o6m" firstAttribute="centerY" secondItem="Iia-lT-rbm" secondAttribute="centerY" id="ihJ-wQ-sYK"/>
-                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="QJP-qA-o6m"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="DRn-Bl-Q3q"/>
-                                <exclude reference="GUg-4r-27B"/>
-                                <exclude reference="ihJ-wQ-sYK"/>
+                                <exclude reference="eeo-Ok-cHb"/>
+                                <exclude reference="lgW-8f-1OF"/>
+                                <exclude reference="dMa-OK-4Pw"/>
+                                <exclude reference="J1d-CG-KM2"/>
+                                <exclude reference="m1d-nY-DLQ"/>
+                                <exclude reference="gDR-hg-H9F"/>
+                                <exclude reference="BiZ-B7-gsi"/>
+                                <exclude reference="RJJ-92-MId"/>
+                                <exclude reference="fAd-5B-k7x"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="QJP-qA-o6m"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="DRn-Bl-Q3q"/>
-                                <include reference="GUg-4r-27B"/>
-                                <include reference="ihJ-wQ-sYK"/>
+                                <include reference="eeo-Ok-cHb"/>
+                                <include reference="lgW-8f-1OF"/>
+                                <include reference="dMa-OK-4Pw"/>
+                                <include reference="J1d-CG-KM2"/>
+                                <include reference="m1d-nY-DLQ"/>
+                                <include reference="gDR-hg-H9F"/>
+                                <include reference="BiZ-B7-gsi"/>
+                                <include reference="RJJ-92-MId"/>
+                                <include reference="fAd-5B-k7x"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="datePicker" destination="QJP-qA-o6m" id="GWD-ft-b9t"/>
+                        <outlet property="daysLabel" destination="lgW-8f-1OF" id="btF-Zd-5jP"/>
+                        <outlet property="daysStaticLabel" destination="gDR-hg-H9F" id="d75-4E-XkK"/>
+                        <outlet property="hoursLabel" destination="dMa-OK-4Pw" id="Mkf-A8-zvt"/>
+                        <outlet property="hoursStaticLabel" destination="BiZ-B7-gsi" id="NPa-cI-i1I"/>
+                        <outlet property="minutesLabel" destination="J1d-CG-KM2" id="d2d-Q9-n87"/>
+                        <outlet property="minutesStaticLabel" destination="RJJ-92-MId" id="o81-kD-z8K"/>
+                        <outlet property="secondsLabel" destination="m1d-nY-DLQ" id="VWA-gE-SUP"/>
+                        <outlet property="secondsStaticLabel" destination="fAd-5B-k7x" id="zZJ-QF-FOg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5UK-0u-Su0" userLabel="First Responder" sceneMemberID="firstResponder"/>

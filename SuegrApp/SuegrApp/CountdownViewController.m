@@ -10,7 +10,16 @@
 
 @interface CountdownViewController ()
 
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UILabel *daysLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hoursLabel;
+@property (weak, nonatomic) IBOutlet UILabel *minutesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *daysStaticLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hoursStaticLabel;
+@property (weak, nonatomic) IBOutlet UILabel *minutesStaticLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondsStaticLabel;
+
+@property (strong, nonatomic) NSDate *dueDate;
 
 @end
 
@@ -18,15 +27,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    // Create a new date with the current time
-    NSDate *date = [NSDate new];
-    // Split up the date components
-    NSDateComponents *time = [[NSCalendar currentCalendar]
-                              components:NSCalendarUnitHour | NSCalendarUnitMinute
-                              fromDate:date];
-    NSInteger seconds = ([time hour] * 60 * 60) + ([time minute] * 60);
-    _datePicker.countDownDuration = seconds;
+    _dueDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"panicked"];
+    _dueDate = _dueDate == nil ? [NSDate dateWithTimeIntervalSinceNow:4500] : _dueDate;
+    [self setupView];
+    [self updateCountDown];
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateCountDown) userInfo:nil repeats:YES];
+}
+
+- (void)setupView {
+    CGFloat labelWidth = 10;
+    CGFloat staticLabelWidth = 160;
+    CGFloat labelHeight = 80.0;
+    // days
+    _daysLabel.frame = CGRectMake(0.0, 0.0, labelWidth, labelHeight);
+    _daysStaticLabel.frame = CGRectMake(labelWidth, 0.0, staticLabelWidth, labelHeight);
+    // hours
+    _hoursLabel.frame = CGRectMake(0.0, labelHeight, labelWidth, labelHeight);
+    _hoursStaticLabel.frame = CGRectMake(labelWidth, labelHeight, staticLabelWidth, labelHeight);
+    // minutes
+    _minutesLabel.frame = CGRectMake(0.0, 2.0* labelHeight, labelWidth, labelHeight);
+    _minutesStaticLabel.frame = CGRectMake(labelWidth, 2.0* labelHeight, staticLabelWidth, labelHeight);
+    // seconds
+    _secondsLabel.frame = CGRectMake(0.0, 3.0* labelHeight, labelWidth, labelHeight);
+    _secondsStaticLabel.frame = CGRectMake(labelWidth, 3.0* labelHeight, staticLabelWidth, labelHeight);
+}
+
+- (void)updateCountDown {
+    NSTimeInterval timediff = [_dueDate timeIntervalSinceDate:[NSDate date]];
+    NSUInteger secondsInADay = 60*60*24;
+    NSUInteger secondsInAnHour = 60*60;
+    NSUInteger secondsInAMinute = 60;
+    NSUInteger days = floor(timediff/secondsInADay);
+    NSUInteger remainder = timediff - secondsInADay * days;
+    NSUInteger hours = floor(remainder/secondsInAnHour);
+    remainder = remainder - secondsInAnHour * hours;
+    NSUInteger minutes = floor(remainder/secondsInAMinute);
+    NSUInteger seconds = remainder - secondsInAMinute * minutes;
+    // update labels
+    _daysLabel.text = [NSString stringWithFormat:@"%d", days];
+    _hoursLabel.text = [NSString stringWithFormat:@"%d", hours];
+    _minutesLabel.text = [NSString stringWithFormat:@"%d", minutes];
+    _secondsLabel.text = [NSString stringWithFormat:@"%d", seconds];
 }
 
 - (void)didReceiveMemoryWarning {
