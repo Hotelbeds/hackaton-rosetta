@@ -26,16 +26,19 @@ function closeInfoBox() { $('div.infoBox').remove(); };
 
 function getInfoBox(item) {
 		var scope = angular.element(document.getElementById('evmain')).scope();
+		var start = item.start.split('T'), end = item.end.split('T');
+
 			return new InfoBox({
 				content:
 				'<div class="marker_info none" id="marker_info">' +
 				'<div class="info" id="info">'+
 				'<img src="' + item.logo + '" class="logotype" alt=""/>' +
-				'<h2>'+ item.name +'<span></span></h2>' +
-				'<span>'+ item.start + ' to ' + item.end +'</span>' +
+				'<span onclick="closeInfoBox();" style="padding:0px 12px;text-align:right;line-height:23px;"><i class="fa fa-times"></i></span>' +
+				'<h2 style="padding:0">'+ item.name.substr(0,44) +'<span></span></h2>' +
+				'<span>'+ start[0] + ' ' + start[1].substr(0,start[1].length-3) + ' to ' + end[0] + ' ' + end[1].substr(0,end[1].length-3) +'</span>' +
 				'<span>'+ item.price + ' ' + item.currency +'</span>' +
 				//'<span>'+ item.description +'</span>' +
-				'<a id="'+item.id+'" href="/#!/invite" class="green_btn" ngClick="'+scope.setCurrentEvent(item)+'">Invite</a>' +
+				'<a id="'+item.id+'" href="/#!/invite" class="green_btn" style="background-color:#FF5700; color:#fff" role="button" ng-click="'+scope.setCurrentEvent(item)+'">Invite</a>' +
 				'<span class="arrow"></span>' +
 				'</div>' +
 				'</div>',
@@ -106,10 +109,14 @@ function initMap(markersData, currentPosition) {
 			}
 		}
 
-angular.module('events').controller('EventsController', ['$scope', 'Authentication', '$http', 'Invitations',
-	function($scope, Authentication, $http, Invitations) {
+angular.module('events').controller('EventsController', ['$scope', 'Authentication', '$http', 'Invitations','$location',
+	function($scope, Authentication, $http, Invitations, $location) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
+
+		$scope.menuLocation = function(id) {
+			$location.hash(id)
+		}
 
 		$scope.setCurrentEvent = function(item) {
 			Invitations.setEvent(item);
@@ -127,7 +134,7 @@ angular.module('events').controller('EventsController', ['$scope', 'Authenticati
 		        navigator.geolocation.getCurrentPosition(function(position){
 		        	var req = {
 						method: 'GET',
-					 	url: 'http://10.162.127.16:8080/api/listevents',
+					 	url: 'http://192.168.1.11:8080/api/listevents',
 					 	headers: {
 					   	'Content-Type': undefined
 					 	},

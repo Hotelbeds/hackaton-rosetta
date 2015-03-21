@@ -27,6 +27,7 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/jquery/dist/jquery.min.js',
+				'public/lib/listsearch.js'
 			]
 		},
 		css: [
@@ -38,7 +39,8 @@ module.exports = {
 			'public/modules/*/*.js',
 			'public/modules/*/*[!tests]*/*.js',
 			'http://maps.googleapis.com/maps/api/js?key=AIzaSyCsbzuJDUEOoq-jS1HO-LUXW4qo0gW9FNs',
-			'public/js/*.js'		],
+			'public/js/*.js'
+			],
 		tests: [
 			'public/lib/angular-mocks/angular-mocks.js',
 			'public/modules/*/tests/*.js'
