@@ -8,7 +8,9 @@
  */
 
 // requires
-var MongoClient = require('mongodb').MongoClient;
+var mongo = require('mongodb');
+var MongoClient = mongo.MongoClient;
+
 var config = require('../config.js');
 var Log = require('log');
 var testing = require('testing');
@@ -105,6 +107,13 @@ exports.getCollection = function(name) {
 		return null;
 	}
 	return db.collection(name);
+};
+
+/**
+ * Massage an string to ObjectId
+ */
+exports.massageToObjectId = function(id) {
+    return mongo.ObjectID(id);
 };
 
 /***********************************

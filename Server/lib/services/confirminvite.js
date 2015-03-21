@@ -7,6 +7,7 @@ var async = require('async');
 var utils = require('../utils/utils');
 var request = require('request');
 var db = require('../db.js');
+var mongo = require('mongodb')
 var Log = require('log');
 
 // globals
@@ -39,15 +40,52 @@ exports.sendRequest = function (parameters, callback) {
             return callback(null, invitationsCollection);
         });
     });
-    // update record
+    // check if the invitation id exists
     mainStream.push(function (invitationsCollection, callback) {
-        invitationsCollection.update(
-            {owner:parameters.owner,
-                event:parameters.eventId, hotel:utils.unformatRateKey(parameters.reservationKey)
-            }, {'$set':parameters}, {upsert:true}, callback);
+        invitationsCollection.findOne({_id: db.massageToObjectId(parameters.invitationId)}, function(err, doc) {
+            if (doc == null)
+                return callback("Invitation Id not found!");
+            else
+                return callback(null, {invitation: doc, collection:invitationsCollection} );
+        });
     });
+
+    // check if the invitation has as pending the requested userId, and update it
+    mainStream.push(function (holder, callback) {
+        if (holder.invitation.invites.indexOf(parameters.userId) != -1) {
+            // Ok, the user is in the pending list, remove it from there
+            holder.collection.update({ _id: db.massageToObjectId(parameters.invitationId) }, { $pull: { "pending": parameters.userId } },
+                function(err,doc) {
+                    if (!err)
+                        return callback(null, holder.collection);
+                    else
+                        callback(err,null);
+                }
+            )
+        } else {
+            return callback("User Id not found in the pending invitations!");
+        }
+    });
+
+    // finally, return the updated invitation
+    mainStream.push(function (invitationsCollection, callback) {
+        invitationsCollection.findOne({_id: db.massageToObjectId(parameters.invitationId)}, function(err, doc) {
+            if (doc == null)
+                return callback("Invitation Id not found!");
+            else
+                return callback(null,
+                    utils.buildInvitation(parameters.invitationId,
+                        doc.owner,
+                        doc.eventId,
+                        doc.hotel,
+                        doc.invites,
+                        doc.pendingInvites
+                ));
+        });
+    });
+
+
+
     // run mainstream
-    async.waterfall(mainStream, function (error) {
-        return callback (error, null);
-    });
+    async.waterfall(mainStream, callback);
 }

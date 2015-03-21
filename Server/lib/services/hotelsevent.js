@@ -83,19 +83,7 @@ function listhotels(radius, paxes, callback, event) {
             for (var i in body.hotels.hotels) {
                 var hbhotel = body.hotels.hotels[i];
 
-                hotels.push({
-                    name:hbhotel.name,
-                    destination:hbhotel.destination,
-                    from: fromDate,
-                    to: toDate,
-                    latitude:hbhotel.latitude,
-                    longitude:hbhotel.longitude,
-                    room:hbhotel.rooms[0].name,
-                    price:hbhotel.rooms[0].prices[0].net,
-                    currency:hbhotel.rooms[0].prices[0].currency,
-                    board:hbhotel.rooms[0].prices[0].boardCode,
-                    reservationKey:hbhotel.rooms[0].prices[0].rateKey
-                });
+                hotels.push(hotels.push(utils.buildHotel(hbhotel,fromDate,toDate)));
 
             }
             console.log(hotels) // Print the shortened url.

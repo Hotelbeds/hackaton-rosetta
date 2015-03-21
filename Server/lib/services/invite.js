@@ -57,7 +57,7 @@ exports.sendRequest = function (parameters, callback) {
 	});
 	// update record
 	mainStream.push(function (invitationsCollection, callback) {
-		invitationsCollection.update({owner:parameters.owner, event:parameters.eventId, hotel:utils.unformatRateKey(parameters.reservationKey)}, {'$set':parameters}, {upsert:true}, callback);
+		invitationsCollection.update({owner:parameters.owner, hotel:utils.unformatRateKey(parameters.reservationKey)}, {'$set':parameters}, {upsert:true}, callback);
 	});
 	// run mainstream
 	async.waterfall(mainStream, function (error) {
