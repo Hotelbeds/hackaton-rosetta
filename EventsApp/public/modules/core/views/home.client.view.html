@@ -1,23 +1,27 @@
-<section data-ng-controller="HomeController" class="promo">
-	<div class="start_descrition option animated fadeInDownBig">
-      <a href="#" class="start_logo"><img src="img/logo.png" alt="Eventa"/></a>
-      <h1>Eventos + Hoteles!<span></span></h1>
-      <span>¿Fútbol, música, comida?, Eventos con hotel incluido para que disfrutes al máximo de tu experiencia! </span>
-        <div class="btns"><a href="/#!/events" class="green" style="cursor:pointer">A disfrutar!</a></div>
+<section data-ng-controller="HomeController">
+    <div class="promo" >
+    	<div class="start_descrition option animated fadeInDownBig">
+          <a href="#" class="start_logo"><img src="img/logo.png" alt="Eventa"/></a>
+          <h1>Eventos + Hoteles!<span></span></h1>
+          <span>¿Fútbol, música, comida?, Eventos con hotel incluido para que disfrutes al máximo de tu experiencia! </span>
+            <div class="btns"><a href="/#!/events" class="green" style="cursor:pointer">A disfrutar!</a></div>
+        </div>
+        <div class="animation">
+            <img src="img/start/01.png" class="option animated fadeInDownBig one_element" alt="#">
+            <img src="img/start/02.png" class="option animated fadeInDownBig two_element" alt="#">
+            <img src="img/start/03.png" class="option animated fadeInDownBig three_element" alt="#">
+            <img src="img/start/04.png" class="option animated fadeInDownBig four_element" alt="#">
+            <img src="img/start/05.png" class="option animated fadeInDownBig five_element" alt="#">
+            <img src="img/start/06.png" class="option animated fadeInDownBig six_element" alt="#">
+            <img src="img/start/07.png" class="option animated fadeInRightBig seven_element" alt="#">
+            <img src="img/start/08.png" class="option animated fadeInLeftBig eight_element" alt="#">
+            <img src="img/start/09.png" class="option animated fadeInDownBig nine_element" alt="#">
+            <img src="img/start/10.png" class="option animated fadeInUpBig ten_element" alt="#">
+            <img src="img/start/11.png" class="option animated fadeInUpBig quote_element" alt="#">
+            <img src="img/start/12.png" class="option animated fadeInUpBig quote_two_element" alt="#">
+        </div>
+        <div class="bgg"></div>
     </div>
-    <div class="animation">
-        <img src="img/start/01.png" class="option animated fadeInDownBig one_element" alt="#">
-        <img src="img/start/02.png" class="option animated fadeInDownBig two_element" alt="#">
-        <img src="img/start/03.png" class="option animated fadeInDownBig three_element" alt="#">
-        <img src="img/start/04.png" class="option animated fadeInDownBig four_element" alt="#">
-        <img src="img/start/05.png" class="option animated fadeInDownBig five_element" alt="#">
-        <img src="img/start/06.png" class="option animated fadeInDownBig six_element" alt="#">
-        <img src="img/start/07.png" class="option animated fadeInRightBig seven_element" alt="#">
-        <img src="img/start/08.png" class="option animated fadeInLeftBig eight_element" alt="#">
-        <img src="img/start/09.png" class="option animated fadeInDownBig nine_element" alt="#">
-        <img src="img/start/10.png" class="option animated fadeInUpBig ten_element" alt="#">
-        <img src="img/start/11.png" class="option animated fadeInUpBig quote_element" alt="#">
-        <img src="img/start/12.png" class="option animated fadeInUpBig quote_two_element" alt="#">
-    </div>
-    <div class="bgg"></div>
+    <!-- div data-ng-show="(authentication.user && currentPath === '/#!/events') || (currentPath === '/' && authentication.user)" data-ng-include src='"modules/events/views/events.client.view.html"'></div>
+    <div data-ng-show="authentication.user && currentPath === '/#!/invite' " data-ng-include src='"modules/invite/views/invite.client.view.html"'></div -->
 </section>
