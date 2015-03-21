@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-SuegrApp-libextobjc.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SuegrApp.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>441331DF7C2334C4E185BB79</key>
+		<key>0A7D4629C72B27B1BCE22131</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C41BC0B688CE5CA217E0BE97</key>
+		<key>4FF1110760AE0B2A76EAE22E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5F5A5E6D8D2C1C8E88621208</key>
 		<dict>
 			<key>primary</key>
 			<true/>
