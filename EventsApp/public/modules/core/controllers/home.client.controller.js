@@ -9,7 +9,8 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		console.log($location.path());
 
 		if (Authentication && Authentication.user) {
-			$location.path('/events');
+			console.log('REdirect to events ');
+			//$location.path('/events');
 		}
 	}
 ]);

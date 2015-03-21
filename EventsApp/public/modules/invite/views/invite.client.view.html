@@ -18,9 +18,8 @@
     						<input class="search" />
     						<button type="button" class="btn btn-primary" data-sort="name">Invite your friend!</button>
 						    <ul class="list">
-						       <li ng-repeat="friend in friends">
-						           <h3 class="name">{{friend.name}}</h3>
-						           <p class="city"><img alt src='{{friend.picture}}'></p>
+						       <li style="list-style-type:none" ng-repeat="friend in friends" on-finish-render="prepareList();">
+						           <h3 class="name"><img alt src='{{friend.picture}}'>{{friend.name}}</h3>
 						       </li>
 						    </ul>
 						</div>
@@ -60,3 +59,4 @@
 	<div class="container-fluid menu mobile" data-ng-include="'/modules/core/views/footer.client.view.html'">
 	</div> -->
 </section>
+
