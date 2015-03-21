@@ -16,6 +16,14 @@ angular.module('invite').config(['$stateProvider', '$urlRouterProvider',
 		state('hotels', {
 			url: '/hotels',
 			templateUrl: 'modules/invite/views/hotels.client.view.html'
-		});
+		}).
+		state('bookings', {
+			url: '/bookings',
+			templateUrl: 'modules/invite/views/bookings.client.view.html'
+		}).
+		state('pending', {
+			url: '/pending',
+			templateUrl: 'modules/invite/views/pending.client.view.html'
+		})
 	}
 ]);

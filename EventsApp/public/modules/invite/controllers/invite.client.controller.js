@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('invite').controller('InviteController', ['$scope', 'Authentication', '$http', 'Invitations',
-	function($scope, Authentication, $http, Invitations) {
+angular.module('invite').controller('InviteController', ['$scope', 'Authentication', '$http', 'Invitations', '$location',
+	function($scope, Authentication, $http, Invitations, $location) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 		$scope.nologo = 'img/c_interior.png';
@@ -19,6 +19,11 @@ angular.module('invite').controller('InviteController', ['$scope', 'Authenticati
 		$scope.currentEvent = function() {
 			console.log(Invitations.getEvent());
 			return Invitations.getEvent();
+		}
+
+		if (!Invitations.getEvent() || !Invitations.getEvent().id) {
+			console.log('Come back to events no event selected');
+			$location.path('/events');
 		}
 
 		$scope.getHotels = function () {
@@ -72,7 +77,7 @@ angular.module('invite').controller('InviteController', ['$scope', 'Authenticati
 			$scope.event = $scope.currentEvent();
 			var req = {
 				method: 'GET',
-				url: 'http://10.162.127.16:8080/api/friends',
+				url: 'http://10.162.125.1:8080/api/friends',
 						headers: {
 						   	'Content-Type': undefined
 						},
@@ -103,6 +108,7 @@ angular.module('invite').controller('InviteController', ['$scope', 'Authenticati
 		$scope.invited = [];
 		$scope.num = Invitations.getNumFriends();
 		$scope.hotels = Invitations.getHotels();
+		$scope.booked = false;
 
 		if (!Invitations.getEvent() || !Invitations.getEvent().id) {
 			console.log('Come back to events no event selected');
@@ -128,7 +134,7 @@ angular.module('invite').controller('InviteController', ['$scope', 'Authenticati
 		$scope.book = function(hotel) {
 			var req = {
 				method: 'GET',
-				url: 'http://10.162.127.16:8080/api/invite',
+				url: 'http://10.162.125.1:8080/api/invite',
 				headers: {
 				   	'Content-Type': undefined
 				},
@@ -140,6 +146,7 @@ angular.module('invite').controller('InviteController', ['$scope', 'Authenticati
 	    	$http(req).
 				success(function(data, status, headers, config) {    					
 					console.log(data);
+					$scope.booked = true;
 					return false;
 				}).
 				error(function(data, status, headers, config) {
@@ -154,7 +161,7 @@ angular.module('invite').controller('InviteController', ['$scope', 'Authenticati
 
 			var req = {
 				method: 'GET',
-				url: 'http://10.162.127.16:8080/api/hotelsevent',
+				url: 'http://10.162.125.1:8080/api/hotelsevent',
 				headers: {
 				   	'Content-Type': undefined
 				},
@@ -173,5 +180,54 @@ angular.module('invite').controller('InviteController', ['$scope', 'Authenticati
 					console.log(data);
 				});
 		}
+	}
+]).controller('PendingController', ['$scope', 'Authentication', '$http', 'Invitations', '$location', 
+	function($scope, Authentication, $http, Invitations, $location) {
+			
+			$scope.authentication = Authentication;
+			
+			$scope.closeBooking = function (eventid) {
+				var req = {
+				method: 'GET',
+				url: 'http://10.162.125.1:8080/api/confirminvite',
+				headers: {
+				   	'Content-Type': undefined
+				},
+				//params: { eventid: $scope.currentEvent().id, radius: '30', paxes: $scope.num },
+				params: { userId: Authentication.user.providerData.id, invitationId: eventid },
+				//params: { userId: '10152783923492914', invitationId: eventid },
+				}
+
+				$http(req).
+				success(function(data, status, headers, config) {
+					$location.path('/pending');
+					return false;
+				}).
+				error(function(data, status, headers, config) {
+					console.log(data);
+				});
+			}
+
+			var req = {
+				method: 'GET',
+				url: 'http://10.162.125.1:8080/api/listinvites',
+				headers: {
+				   	'Content-Type': undefined
+				},
+				//params: { eventid: $scope.currentEvent().id, radius: '30', paxes: $scope.num },
+				params: { userId: Authentication.user.providerData.id },
+				//params: { userId: '10152783923492914' },
+				
+				
+			}
+			
+	    	$http(req).
+				success(function(data, status, headers, config) {    					
+					$scope.listinvites = data;
+					return false;
+				}).
+				error(function(data, status, headers, config) {
+					console.log(data);
+				});
 	}
 ]);
