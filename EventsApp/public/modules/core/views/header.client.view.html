@@ -1,5 +1,5 @@
 
-<header class="navbar navbar-fixed-top" data-ng-controller="HeaderController">
+<header id="headerMenu" class="navbar navbar-fixed-top" style="background-color:black" data-ng-controller="HeaderController">
 
 <div class="container">
 	<div class="navbar-header">
@@ -15,13 +15,22 @@
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation" style="height: 0px;">
 		<!-- ngIf: menu.shouldRender(authentication.user); -->
+
+		<ul class="nav navbar-nav navbar-citems" data-no-collapse="true">
+			<li><a href="javascript:toggleMarkers('Showplace');" class="showplace"><i class="fa fa-music"></i></a></li>
+			<li><a href="javascript:toggleMarkers('Club');" class="club"><i class="fa fa-beer"></i></a></li>
+			<li><a href="javascript:toggleMarkers('Cafe');" class="cafe"><i class="fa fa-cutlery"></i></a></li>
+			<li><a href="javascript:toggleMarkers('Sport');" class="sport"><i class="fa fa-futbol-o"></i></a></li>
+			<li><a href="javascript:toggleMarkers('Cinema');" class="cinema"><i class="fa fa-film"></i></a></li>
+		</ul>
+	
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-			<li ui-route="/signup" ng-class="{active: $uiRoute}">
+			<!-- li ui-route="/signup" ng-class="{active: $uiRoute}">
 				<a href="/#!/signup">Sign Up</a>
-			</li>
+			</li --> 
 			<li class="divider-vertical"></li>
-			<li ui-route="/signin" ng-class="{active: $uiRoute}">
-				<a href="/#!/signin">Sign In</a>
+			<li ui-route="/invite" ng-class="{active: $uiRoute}">
+				<a href="/#!/invite">Sign In</a>
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right ng-hide" data-ng-show="authentication.user">

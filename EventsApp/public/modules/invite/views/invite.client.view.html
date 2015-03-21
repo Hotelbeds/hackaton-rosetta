@@ -6,27 +6,47 @@
 	</div>
 
 	<div class="container contant">
-		<div class="row" data-ng-show="authentication.user">
-			<div class="col-md9 basic">
-				<div class="head"></div>
-				<div class="header_section" style="background:url({{event.logo}}) no-repeat;">
-					<h1>{{event.name}}</h1>
-				</div>
-				<div class="icon_descr_block">
-					<div class="cols">
-						<div id="hacker-list">
-    						<input class="search" />
-    						<button type="button" class="btn btn-primary" data-sort="name">Invite your friend!</button>
-						    <ul class="list">
-						       <li style="list-style-type:none" ng-repeat="friend in friends" on-finish-render="prepareList();">
-						           <h3 class="name"><img alt src='{{friend.picture}}'>{{friend.name}}</h3>
-						       </li>
-						    </ul>
+		<div data-ng-show="authentication.user">
+			<div class="row">
+				<div class="head" style="margin-top:15px;"></div>
+				<div class="col-md9 basic">
+					<div class="thumbnail">
+			      		<img src="{{event.logo || nologo}}" alt="...">
+				     	<div class="caption">
+				        	<h3>{{event.name || noName}}</h3>
+				        	<p>{{event.description || noDesc}}</p>
+				        	<p ng-if="event"><a href="#" class="btn btn-primary" role="button">More Info</a> <a href="#" class="btn btn-default" role="button">Change event</a></p>
+				      	</div>
+				    </div>
+					<!-- div class="header_section" style="background:url({{event.logo}}) no-repeat;">
+						<h1>{{event.name}}</h1>
+					</div -->
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<div class="cols">
+							<div class="list-group" id="hacker-list">
+								<h4><input class="search" placeholder="Search your friend"/>
+								Total friends invited: <span class="badge" ng-bind="num"></span>
+								</h4>
+								<a href="/#!/hotels" type="button" class="btn btn-md btn-success">Get your hotel</a>
+								<hr>
+  								<a id="{{friend.id}}" href="" class="list-group-item" ng-repeat="friend in friends" on-finish-render="prepareList();" ng-click="invite({{friend}});">
+    								<h4 class="list-group-item-heading"><img class="thumbnail" alt src='{{friend.picture}}'> {{friend.name}}</h4>
+    								<p ng-if="!friend.invited" class="list-group-item-text">Touch for invite</p>
+    								<p ng-if="friend.invited" class="list-group-item-text">Invited</p>
+  								</a>
+							</div>
 						</div>
 					</div>
+					<div class="col-md-3"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md9 basic">
 				</div>
 			</div>
 		</div>
+
 		<div class="row" data-ng-show="!authentication.user">
 			<div class="col-md9 basic">
 				<div class="head"></div>

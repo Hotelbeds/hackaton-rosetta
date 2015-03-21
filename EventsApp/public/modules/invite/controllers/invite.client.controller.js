@@ -5,13 +5,18 @@ angular.module('invite').controller('InviteController', ['$scope', 'Authenticati
 	function($scope, Authentication, $http, Invitations) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
+		$scope.nologo = 'img/c_interior.png';
+		$scope.noDesc = 'Please select an event to enjoy it !';
+		$scope.noName = 'No event';
+		$scope.invited = [];
+		$scope.num = Invitations.getNumFriends();
+		$scope.hotels = Invitations.getHotels();
 
 		$scope.setCurrentEvent = function(item) {
 			Invitations.setEvent(item);
 		}
 
 		$scope.currentEvent = function() {
-			console.log('ddd');
 			console.log(Invitations.getEvent());
 			return Invitations.getEvent();
 		}
@@ -19,15 +24,19 @@ angular.module('invite').controller('InviteController', ['$scope', 'Authenticati
 		$scope.getHotels = function () {
 			var req = {
 					method: 'GET',
-					url: 'http://10.162.127.16:8080/api/hotelsavail',
+					url: 'http://10.162.127.16:8080/api/hotelsevent',
 					headers: {
 					   	'Content-Type': undefined
 					},
-					params: { eventid: $scope.currentEvent.id, radius: '10', paxes: '4' },
+					//params: { eventid: $scope.currentEvent().id, radius: '30', paxes: $scope.num },
+					params: { eventid: 13151784341, radius: '200', paxes: $scope.num },
+					
 			}
         	$http(req).
 				success(function(data, status, headers, config) {    					
+					Invitations.setHotels(data);
 					$scope.hotels = data;
+					return false;
 				}).
 				error(function(data, status, headers, config) {
 					console.log(data);
@@ -41,10 +50,29 @@ angular.module('invite').controller('InviteController', ['$scope', 'Authenticati
 			var hackerList = new List('hacker-list', options);
 		}
 
+		$scope.invite = function (friend) {
+			if (!$scope.invited[friend.id]) {
+				jQuery('#'+friend.id).css('background-color','#ec971f');
+				jQuery('#'+friend.id).css('color','#fff');
+				//jQuery('#'+friend.id).css('border-color','#fff');
+				$scope.invited[friend.id] = true;
+				$scope.num++;
+				Invitations.setNumFriends($scope.num);
+			} else {
+				jQuery('#'+friend.id).css('background-color','#fff');
+				jQuery('#'+friend.id).css('color','#000');
+				//jQuery('#'+friend.id).css('border-color','#555');
+				$scope.invited[friend.id] = false;
+				$scope.num--;
+				Invitations.setNumFriends($scope.num);
+			}
+		}
+
 		if (Authentication.user && Authentication.user.providerData && Authentication.user.providerData.accessToken) {
-				var req = {
-						method: 'GET',
-						url: 'http://10.162.127.16:8080/api/friends',
+			$scope.event = $scope.currentEvent();
+			var req = {
+				method: 'GET',
+				url: 'http://10.162.127.16:8080/api/friends',
 						headers: {
 						   	'Content-Type': undefined
 						},
@@ -53,12 +81,97 @@ angular.module('invite').controller('InviteController', ['$scope', 'Authenticati
 	        	$http(req).
 					success(function(data, status, headers, config) {    					
 						$scope.friends = data;
-						$scope.event = $scope.currentEvent();
+						for (var i = 0; i < $scope.friends.length; i++) {
+							var keyvalue = $scope.friends[i].id;
+							//keyvalue[$scope.friends[i].id] = false;
+        					$scope.invited[keyvalue] = false;
+    					}
 						return false;
 					}).
 					error(function(data, status, headers, config) {
-						console.log(data);
+							console.log(data);
 					});
+		}
+	}
+]).controller('HotelsController', ['$scope', 'Authentication', '$http', 'Invitations', '$location', 
+	function($scope, Authentication, $http, Invitations, $location) {
+		// This provides Authentication context.
+		$scope.authentication = Authentication;
+		$scope.nologo = 'img/c_interior.png';
+		$scope.noDesc = 'Please select an event to enjoy it !';
+		$scope.noName = 'No event';
+		$scope.invited = [];
+		$scope.num = Invitations.getNumFriends();
+		$scope.hotels = Invitations.getHotels();
+
+		if (!Invitations.getEvent() || !Invitations.getEvent().id) {
+			console.log('Come back to events no event selected');
+			$location.path('/events');
+		}
+
+		$scope.setCurrentEvent = function(item) {
+			Invitations.setEvent(item);
+		}
+
+		$scope.currentEvent = function() {
+			console.log(Invitations.getEvent());
+			return Invitations.getEvent();
+		}
+
+		$scope.prepareList = function () {
+			var options = {
+    			valueNames: [ 'name', 'city' ]
+			};
+			var hackerList = new List('hacker-list', options);
+		}
+		
+		$scope.book = function(hotel) {
+			var req = {
+				method: 'GET',
+				url: 'http://10.162.127.16:8080/api/invite',
+				headers: {
+				   	'Content-Type': undefined
+				},
+				//params: { eventid: $scope.currentEvent().id, radius: '30', paxes: $scope.num },
+				params: { reservationKey: hotel.reservationKey, eventId: $scope.currentEvent().id, invites: '["10152783923492914", "10204982377092604"]', owner: "792732090815245" },
+				
+			}
+			
+	    	$http(req).
+				success(function(data, status, headers, config) {    					
+					console.log(data);
+					return false;
+				}).
+				error(function(data, status, headers, config) {
+					console.log(data);
+				});
+		}	
+		
+
+		if (Authentication.user && Authentication.user.providerData && Authentication.user.providerData.accessToken) {
+			$scope.event = $scope.currentEvent();
+			
+
+			var req = {
+				method: 'GET',
+				url: 'http://10.162.127.16:8080/api/hotelsevent',
+				headers: {
+				   	'Content-Type': undefined
+				},
+				//params: { eventid: $scope.currentEvent().id, radius: '30', paxes: $scope.num },
+				params: { eventid: 13151784341, radius: '200', paxes: $scope.num },
+				
+			}
+			
+	    	$http(req).
+				success(function(data, status, headers, config) {    					
+					Invitations.setHotels(data);
+					$scope.hotels = data;
+					return false;
+				}).
+				error(function(data, status, headers, config) {
+					console.log(data);
+				});
 		}
 	}
 ]);

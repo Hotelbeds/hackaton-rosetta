@@ -55,7 +55,7 @@ function getInfoBox(item) {
 
 function initMap(markersData, currentPosition) {
 		var mapOptions = {
-				zoom: 12,
+				zoom: 11,
 				center: currentPosition,
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 
@@ -129,7 +129,7 @@ angular.module('events').controller('EventsController', ['$scope', 'Authenticati
 
 		angular.element(document).ready(function() {
 			//initialize();
-
+		
 		    if (navigator.geolocation) {
 		        navigator.geolocation.getCurrentPosition(function(position){
 		        	var req = {
@@ -138,7 +138,7 @@ angular.module('events').controller('EventsController', ['$scope', 'Authenticati
 					 	headers: {
 					   	'Content-Type': undefined
 					 	},
-					 	params: { latitude: position.coords.latitude, longitude: position.coords.longitude, radius: '10' },
+					 	params: { latitude: position.coords.latitude, longitude: position.coords.longitude, radius: '30' },
 					}
 		        	$http(req).
   						success(function(data, status, headers, config) {    					

@@ -2115,10 +2115,91 @@ a:hover {
 .crop {width:100px;overflow:hidden;height:50px;line-height:50px;}
 
 
+.blue {
+    background-color: #218DEA; 
+    color: #fff;
+}
+
+.orange {
+    background-color: #ec971f; 
+    color: #fff;
+}
 
 
+.navbar-center {
+        text-align: center;
+    }
 
+    ul.navbar-citems {
+        margin: 0px;
+        padding: 0px;
+        text-align: center;
+        max-width: 1600px;
+        margin: 0 auto;
+        float: none;
+        display:inline-block;
+        width: 50%;
+    }
+    .navbar-citems li {
+        list-style: none;
+        display: inline-block;
+        float: none;
+        width: 20%;
+        margin: 0px -2px;
+        padding: 0px;
+    }
+    .navbar-citems li a {
+        display: block;
+        color: rgba(255, 255, 255, 1);
+        font-size: 26px;
+        font-weight: normal;
+        text-align: center;
+        padding: 13px 0px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    .navbar-citems ul li a span {}
 
+    .navbar-citems li a.shop:hover, .navbar-citems li a.shop:focus {
+        background: #F54100;
+        transition: 0.3s;
+    }
+    .navbar-citems li a.cinema:hover, .navbar-citems li a.cinema:focus {
+        background: #00B2B3;
+        transition: 0.3s;
+    }
+    .navbar-citems li a.club:hover, .navbar-citems li a.club:focus {
+        background: #FFAC00;
+        transition: 0.3s;
+    }
+    .navbar-citems li a.cafe:hover, .navbar-citems li a.cafe:focus {
+        background: #62B50A;
+        transition: 0.3s;
+    }
+    .navbar-citems li a.sport:hover, .navbar-citems li a.sport:focus {
+        background: #DD3D83;
+        transition: 0.3s;
+    }
+    .navbar-citems li a.port:hover, .navbar-citems li a.port:focus {
+        background: #006EC6;
+        transition: 0.3s;
+    }
+    .navbar-citems li a.bank:hover, .navbar-citems li a.bank:focus {
+        background: #0081DB;
+        transition: 0.3s;
+    }
+    .navbar-citems li a.post:hover, .navbar-citems li a.post:focus {
+        background: #AAC600;
+        transition: 0.3s;
+    }
+    .navbar-citems li a.showplace:hover, .navbar-citems li a.showplace:focus {
+        background: #009ECC;
+        transition: 0.3s;
+    }
+    .navbar-citems li a.park:hover, .navbar-citems li a.park:focus {
+        background: #006BC3;
+        transition: 0.3s;
+    }
 
 
 

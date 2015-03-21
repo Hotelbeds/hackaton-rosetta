@@ -12,5 +12,9 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 			console.log('REdirect to events ');
 			//$location.path('/events');
 		}
+
+		angular.element(document).ready(function () {
+			jQuery('#headerMenu').removeClass('blue');
+		});
 	}
 ]);
