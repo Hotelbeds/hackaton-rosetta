@@ -19,7 +19,8 @@
     "grunt": "0.4.x",
     "grunt-contrib-jshint": "0.8.x",
     "node-eventbrite": "0.0.9",
-    "request": "*"
+    "request": "*",
+    "johnny-five": "*"
   },
   "scripts": {
     "test": "node test.js"

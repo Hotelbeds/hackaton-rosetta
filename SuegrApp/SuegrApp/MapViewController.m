@@ -84,14 +84,16 @@
                                  @"latitude":@(location.latitude),
                                  @"longitude":@(location.longitude),
                                  @"paxes":@1,
-                                 @"radius":@2.0,
+                                 @"radius":@10.0,
                                  @"from":[_entryDate rosettaStringDateFromNSDate],
                                  @"to":[_toDate rosettaStringDateFromNSDate]
                                  };
-    NSString *hotelsUrlString = [NSString stringWithFormat:@"http://localhost:8080/api/hotelsavail?%@", [parameters urlEncodedString]];
+    NSString *hotelsUrlString = [NSString stringWithFormat:@"http://10.162.125.1:8080/api/hotelsavail?%@", [parameters urlEncodedString]];
+    NSLog(hotelsUrlString);
     NSURL *hotelsUrl = [NSURL URLWithString:hotelsUrlString];
     @weakify(self);
     [[NetworkClient sharedInstance] GETRequestWithURL:hotelsUrl parameters:parameters completion:^(NSError *error, id result) {
+        NSLog(@"result: %@", result);
         // we need to get walking distances now, and then paint the annotations
         NSString *origins = [NSString stringWithFormat:@"%f,%f", location.latitude, location.longitude];
         for (NSDictionary *hotel in result) {
@@ -109,7 +111,7 @@
                 Annotation *point = [[Annotation alloc] init];
                 point.coordinate = CLLocationCoordinate2DMake([hotel[@"latitude"] doubleValue], [hotel[@"longitude"] doubleValue]);
                 point.title = hotel[@"name"];
-                point.subtitle = [NSString stringWithFormat:@"Price: %@ - %@ - %@", hotel[@"price"], result[@"rows"][0][@"elements"][0][@"distance"][@"text"], result[@"rows"][0][@"elements"][0][@"duration"][@"text"]];
+                point.subtitle = [NSString stringWithFormat:@"Price: %.2f - %@ - %@", [hotel[@"price"] doubleValue], result[@"rows"][0][@"elements"][0][@"distance"][@"text"], result[@"rows"][0][@"elements"][0][@"duration"][@"text"]];
                 point.hotel = @{
                                 @"rosetta":hotel,
                                 @"distance":result[@"rows"][0][@"elements"][0][@"distance"][@"text"],
@@ -119,6 +121,7 @@
                 [self.mapView addAnnotation:point];
             }];
         }
+        _drawHotels = YES;
     }];
 }
 

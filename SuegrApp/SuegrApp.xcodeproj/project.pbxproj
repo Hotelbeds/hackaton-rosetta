@@ -276,6 +276,7 @@
 				TargetAttributes = {
 					76B120C51ABCA4B7008F9A66 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = C7L48ER389;
 					};
 					76B120DE1ABCA4B7008F9A66 = {
 						CreatedOnToolsVersion = 6.1;
@@ -499,9 +500,12 @@
 			baseConfigurationReference = 06E6349AB410EC8607FCFFD4 /* Pods-SuegrApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SuegrApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -510,9 +514,12 @@
 			baseConfigurationReference = 12E2842FCD200F5BA23CE6BC /* Pods-SuegrApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SuegrApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

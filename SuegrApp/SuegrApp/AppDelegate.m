@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSDate *panicked = [[NSUserDefaults standardUserDefaults] objectForKey:@"panicked"];
-    if (panicked != nil) {
+    if (panicked != nil && NO) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
         UIViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"countdownViewController"];

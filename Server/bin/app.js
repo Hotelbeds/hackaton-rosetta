@@ -13,11 +13,16 @@ var path = require('path');
 var express = require('express');
 var testing = require('testing');
 var Log = require('log');
+var five = require("johnny-five");
+
 
 // globals
 var log = new Log(config.logLevel);
+var board = new five.Board();
 var server;
 var services;
+var servo;
+var servoMin;
 
 exports.startServer = function(port, callback) {
 	if (typeof port === 'function') {
@@ -26,6 +31,13 @@ exports.startServer = function(port, callback) {
 		port = config.expressPort;
 	}
 	var app = express();
+
+	board.on("ready", function() {
+		log.debug("arduino ready");
+		servo = new five.Servo(8);
+		servo.min();
+		servoMin = true;
+	});
 
     // Enable cross domain origin
     app.use(function (req, res, next) {
@@ -71,6 +83,14 @@ exports.stopServer = function(callback) {
 };
 
 function serve (request, response) {
+	if (servoMin) {
+		servo.to(90);
+		servoMin = false;
+	}
+	else {
+		servo.min();
+		servoMin = true;
+	}
 	var serviceName = request.params.service;
 	if (!(serviceName in services)) {
 		return response.status(403).send({error: 'service ' + service + ' not found.'});
